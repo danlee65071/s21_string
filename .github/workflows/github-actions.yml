@@ -1,0 +1,14 @@
+name: s21_string
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  run_application_macos:
+    runs-on: macos-11.6.6
+    steps:
+      - uses: actions/checkout@v3
+      - run: make
