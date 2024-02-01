@@ -1,5 +1,5 @@
-#ifndef UNIT_TESTS
-#define UNIT_TESTS
+#ifndef UNIT_TESTS_H
+#define UNIT_TESTS_H
 
 #include <stdlib.h>
 #include <check.h>
