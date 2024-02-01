@@ -26,6 +26,9 @@ $(DIR_OBJS)/%.o: %.c Makefile $(HEADERS)
 	@mkdir -p $(DIR_OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
+test: $(NAME)
+	@echo "test"
+
 clean:
 	rm -rf $(DIR_OBJS) $(NAME)
 	rm -rf .clang-format
