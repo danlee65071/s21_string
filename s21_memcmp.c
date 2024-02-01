@@ -1,12 +1,15 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "s21_string.h"
 
-void *memcpy(void *dest, const void *src, size_t n) {
+int s21_memcmp(const void *str1, const void *str2, size_t n) {
     int return_val = 0;
-    if (dest && src) {
-        for (int i = 0; i < n; i++) {
-            *((unsigned char*) dest + i) = ((unsigned char*) src + i);
-            return_val = ((unsigned char*) src + i) - *((unsigned char*) dest + i);
+    if (str1 && str2) {
+        for (size_t i = 0; i < n; i++) {
+            char symb1 = *((char*) (str1 + i));
+            char symb2 = *((char*) (str2 + i));
+            if (symb1 - symb2) {
+                return_val = symb1 - symb2;
+                break;
+            }
         }
     }
     return return_val;
