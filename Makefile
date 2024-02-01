@@ -13,11 +13,12 @@ PATH_SRC_TESTS = $(addprefix $(DIR_TESTS)/, $(SRC_TESTS))
 NAME_TEST = s21_string_test
 
 ifeq ($(shell uname -s), Linux)
-LIBS=-lcheck -lsubunit -lm -lrt -lpthread -lgcov
+LIBS= $(CFLAGS) -lcheck -lsubunit -lm -lrt -lpthread -lgcov
 LEAKS=valgrind --tool=memcheck --leak-check=yes
 endif
 ifeq ($(shell uname -s), Darwin) # MacOS
-LIBS=-lcheck -lm -lpthread -lgcov
+# LIBS=-lcheck -lm -lpthread -lgcov -lsubunit
+LIBS = $(CFLAGS) $(shell pkg-config --cflags check) $(shell pkg-config --libs check)
 LEAKS=leaks -atExit --
 endif
 
@@ -32,7 +33,7 @@ $(DIR_OBJS)/%.o: %.c Makefile $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 test: $(NAME)
-	$(CC) $(CFLAGS) -I . -I$(brew --prefix check) $(PATH_SRC_TESTS) $(LIBS) $(NAME) -o $(NAME_TEST)
+	$(CC) $(CFLAGS) -I . $(PATH_SRC_TESTS) $(LIBS) $(NAME) -o $(NAME_TEST)
 	$(LEAKS) ./$(NAME_TEST)
 	rm -f $(NAME_TEST)
 
