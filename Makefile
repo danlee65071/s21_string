@@ -32,7 +32,7 @@ $(DIR_OBJS)/%.o: %.c Makefile $(HEADERS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 test: $(NAME)
-	$(CC) $(CFLAGS) -I . $(PATH_SRC_TESTS) $(LIBS) $(NAME) -o $(NAME_TEST)
+	$(CC) $(CFLAGS) -I . -I$(brew --prefix check) $(PATH_SRC_TESTS) $(LIBS) $(NAME) -o $(NAME_TEST)
 	$(LEAKS) ./$(NAME_TEST)
 	rm -f $(NAME_TEST)
 
