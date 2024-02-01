@@ -30,20 +30,6 @@ clean:
 	rm -rf $(DIR_OBJS) $(NAME)
 	rm -rf .clang-format
 
-gcov_report: clean $(NAME)
-	$(CC) $(CFLAGS) unit_test/unit_tests.c -L. $(NAME) $(LIBS) --coverage -o checks
-	./checks
-	lcov -t "report" -o report.info -c -d .
-	genhtml -o reports report.info
-	rm -rf checks
-
-test: $(NAME)
-	$(CC) $(CFLAGS)  test/tests.c -L. $(NAME) $(LIBS) -o test_function
-	$(LEAKS) ./test_function
-	rm -f test_function
-	$(CC) $(CFLAGS) test/*.c -L. $(NAME) $(LIBS) -o sprintf
-	$(LEAKS) ./sprintf
-	rm -f sprintf
-
 rebuild: clean all
 
+.PHONY: all clean rebuild
