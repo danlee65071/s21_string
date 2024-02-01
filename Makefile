@@ -1,4 +1,4 @@
-NAME = s21_string.a
+NAME = s21_string.a 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g -std=c11
 SRC = s21_string.c 
