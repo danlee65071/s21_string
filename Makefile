@@ -1,11 +1,11 @@
 NAME = s21_string.a
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g -std=c11
-SRC = s21_string.c
+SRC = s21_string.c 
 HEADERS = s21_string.h
 DIR_OBJS = objs
-OBJC = $(patsubst %.c, %.o, $(SRC))
-PATH_OBJS = $(addprefix $(DIR_OBJS)/, $(OBJC))
+OBJS = $(patsubst %.c, %.o, $(SRC)) # s21_string.o
+PATH_OBJS = $(addprefix $(DIR_OBJS)/, $(OBJS)) # objs/s21_string.o
 
 ifeq ($(shell uname -s), Linux)
 LIBS=-lcheck -lsubunit -lm -lrt -lpthread -lgcov
@@ -18,7 +18,12 @@ endif
 
 all: $(NAME)
 
-s21_string.a: $(PATH_OBJS)
+$(NAME): $(PATH_OBJS)
+	ar rcs $(NAME) $(PATH_OBJS)
+
+$(DIR_OBJS)/%.o: %.c Makefile $(HEADERS)
+	@# -p ишнорирует ошибку 
+	@mkdir -p $(DIR_OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
@@ -41,3 +46,4 @@ test: $(NAME)
 	rm -f sprintf
 
 rebuild: clean all
+
