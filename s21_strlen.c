@@ -8,7 +8,7 @@ size_t s21_strlen(const char *str) {
     size_t n = 0;
     int i = 0;
     while (*(str + i++) != '\0') {
-        n++;
-    }
+            n++;
+        }
     return n;
 }
