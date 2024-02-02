@@ -9,14 +9,17 @@ void case_test(Suite *s, int *fail) {
 }
 
 int main() {
-  int result[3] = {0};
+  int numTests = 5;
+  int result[numTests] = {0};
   int fail = 0;
 
   case_test(s21_memcmp_test(), result);
   case_test(s21_memchr_test(), result);
   case_test(s21_memset_test(), result);
+  case_test(s21_strlen_test(), result);
+  case_test(s21_strncat_test(), result);
 
-  for (int i = 0; i < 3; i++) {
+  for (int i = 0; i < numTests; i++) {
     if (result[i] != 0) {
       fail = 1;
     }
