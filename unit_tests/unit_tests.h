@@ -1,7 +1,6 @@
 #ifndef UNIT_TESTS_H
 #define UNIT_TESTS_H
 
-#include <stdlib.h>
 #include <check.h>
 #include "s21_string.h"
 
