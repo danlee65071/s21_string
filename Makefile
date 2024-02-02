@@ -8,7 +8,7 @@ OBJS = $(patsubst %.c, %.o, $(SRC)) # s21_string.o
 PATH_OBJS = $(addprefix $(DIR_OBJS)/, $(OBJS)) # objs/s21_string.o
 
 DIR_TESTS = unit_tests
-SRC_TESTS = unit_tests.c s21_memcmp_test.c
+SRC_TESTS = unit_tests.c s21_memcmp_test.c s21_memchr_test.c s21_memset_test.c
 PATH_SRC_TESTS = $(addprefix $(DIR_TESTS)/, $(SRC_TESTS))
 NAME_TEST = s21_string_test
 

@@ -4,10 +4,10 @@
 #include <check.h>
 #include <stdlib.h>
 
-#include "../s21_string.h"
+#include "s21_string.h"
 
 Suite *s21_memcmp_test(void);
-Suite *memchr_suite(void);
-Suite *memset_suite(void);
+Suite *s21_memchr_test(void);
+Suite *s21_memcset_test(void);
 
 #endif
