@@ -1,6 +1,5 @@
 #include "unit_tests.h"
 
-
 void case_test(Suite *s, int *fail) {
   SRunner *runner = srunner_create(s);
   srunner_set_fork_status(runner, CK_NOFORK);
@@ -10,12 +9,14 @@ void case_test(Suite *s, int *fail) {
 }
 
 int main() {
-  int result[1] = {0};
+  int result[3] = {0};
   int fail = 0;
 
   case_test(s21_memcmp_test(), result);
+  case_test(s21_memchr_test(), result);
+  case_test(s21_memset_test(), result);
 
-  for (int i = 0; i < 1; i++) {
+  for (int i = 0; i < 3; i++) {
     if (result[i] != 0) {
       fail = 1;
     }
