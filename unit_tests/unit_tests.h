@@ -11,5 +11,6 @@ Suite *s21_memchr_test(void);
 Suite *s21_memset_test(void);
 Suite *s21_strlen_test(void);
 Suite *s21_strncat_test(void);
+Suite *s21_strncmp_test(void);
 
 #endif
