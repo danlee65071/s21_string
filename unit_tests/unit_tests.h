@@ -6,5 +6,7 @@
 #include "s21_string.h"
 
 Suite *s21_memcmp_test(void);
+Suite *s21_strlen_test(void);
+Suite *s21_strncat_test(void);
 
 #endif
