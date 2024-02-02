@@ -10,7 +10,7 @@ void case_test(Suite *s, int *fail) {
 
 int main() {
   int numTests = 5;
-  int result[numTests] = {0};
+  int result[numTests];
   int fail = 0;
 
   case_test(s21_memcmp_test(), result);
