@@ -4,7 +4,7 @@
 void *s21_memchr(const void *str, int c, size_t n) {
   const unsigned char *ptr = (unsigned char *)str;
   for (size_t i = 0; i < n; i++) {
-    if (*ptr == (unsigned char)c) {
+    if (ptr[i] == (unsigned char)c) {
       return (void *)&ptr[i];
     }
   }

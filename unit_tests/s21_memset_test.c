@@ -4,12 +4,12 @@ START_TEST(abrakadabra_test) {
   char def[] = "abrakadabra";
   char expect[] = "abrakadabra";
   char repl = 'i';
-  size_t num_byte = 12;
+  size_t num_byte = 11;
 
   s21_memset(def, repl, num_byte);
   memset(expect, repl, num_byte);
 
-  ck_assert_ptr_eq(def, expect);
+  ck_assert_str_eq(def, expect);
 }
 END_TEST
 
@@ -22,7 +22,7 @@ START_TEST(empty_test) {
   s21_memset(def, repl, num_byte);
   memset(expect, repl, num_byte);
 
-  ck_assert_ptr_eq(def, expect);
+  ck_assert_str_eq(def, expect);
 }
 END_TEST
 
@@ -35,7 +35,7 @@ START_TEST(zero_test) {
   s21_memset(def, repl, num_byte);
   memset(expect, repl, num_byte);
 
-  ck_assert_ptr_eq(def, expect);
+  ck_assert_str_eq(def, expect);
 }
 END_TEST
 
@@ -48,7 +48,7 @@ START_TEST(uppercase_test) {
   s21_memset(def, repl, num_byte);
   memset(expect, repl, num_byte);
 
-  ck_assert_ptr_eq(def, expect);
+  ck_assert_str_eq(def, expect);
 }
 END_TEST
 
@@ -56,16 +56,16 @@ START_TEST(num_test) {
   char def[] = "abrakadabra";
   char expect[] = "abrakadabra";
   char repl = '4';
-  size_t num_byte = 12;
+  size_t num_byte = 11;
 
   s21_memset(def, repl, num_byte);
   memset(expect, repl, num_byte);
 
-  ck_assert_ptr_eq(def, expect);
+  ck_assert_str_eq(def, expect);
 }
 END_TEST
 // тестовый набор Suite, который может содержать несколько групп тестов TCase.
-Suite *s21_memcset_test(void) {
+Suite *s21_memset_test(void) {
   Suite *suite = suite_create("s21_memset");
   // Набор разбивается на группы тестов, разделённых по каким-либо критериям.
   TCase *tcase_core = tcase_create("case_s21_memset");

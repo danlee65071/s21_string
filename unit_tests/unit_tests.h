@@ -8,6 +8,6 @@
 
 Suite *s21_memcmp_test(void);
 Suite *s21_memchr_test(void);
-Suite *s21_memcset_test(void);
+Suite *s21_memset_test(void);
 
 #endif
