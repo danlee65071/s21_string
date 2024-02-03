@@ -5,7 +5,7 @@
 //не содержащего не один из символов строки, 
 //на которую указывает аргумент sym. 
 
-size_t s21_strcspn(const char *s, const char *accept) {
+size_t s21_strspn(const char *s, const char *accept) {
   const char *p;
   const char *a;
   size_t count = 0;
