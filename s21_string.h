@@ -13,5 +13,6 @@ int s21_strncmp(const char *str1, const char *str2, size_t n);
 char *s21_strncpy(char *dest, const char *src, size_t n);
 void *s21_memcpy(void *dest, const void *src, size_t n);
 char *s21_strrchr(const char* str, int c);
+char *s21_strstr(const char *haystack, const char *needle);
 
 #endif
