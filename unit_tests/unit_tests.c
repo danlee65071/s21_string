@@ -9,7 +9,7 @@ void case_test(Suite *s, int *fail) {
 }
 
 int main() {
-  int numTests = 7;
+  int numTests = 8;
   int result[numTests];
   int fail = 0;
 
@@ -20,9 +20,11 @@ int main() {
   case_test(s21_strncat_test(), result);
   case_test(s21_strncmp_test(), result);
   case_test(s21_strncpy_test(), result);
+  case_test(s21_strerror_test(), result);
+  case_test(s21_trim_test(), result);
   case_test(s21_memcpy_test(), result);
-  case_test(s21_strrchr_test(), result);
-  case_test(s21_strstr_test(), result);
+  case_test(s21_strchr_test(), result);
+  case_test(s21_strpbrk_test(), result);
 
   for (int i = 0; i < numTests; i++) {
     if (result[i] != 0) {
@@ -31,4 +33,3 @@ int main() {
   }
   return fail;
 }
-
