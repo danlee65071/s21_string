@@ -16,6 +16,7 @@ Suite *s21_strncpy_test(void);
 Suite *s21_memcpy_test(void);
 Suite *s21_strrchr_test(void);
 Suite *s21_strchr_test(void);
+Suite *s21_strpbrk_test(void);
 #endif
 
 
