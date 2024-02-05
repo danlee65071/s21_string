@@ -1,8 +1,13 @@
+#include "s21_strerror.h"
+
 #include "s21_string.h"
+#include "string.h"
+
 #if defined(__APPLE__)
 
-static const char *errs[MAX_ERROR] = {
-    [0] = "Unknown error: 0",
+char error_mes[100] = "Unknown error: ";
+char *errs[MAX_ERROR] = {
+    [0] = "Undefined error: 0",
     [1] = "Operation not permitted",
     [2] = "No such file or directory",
     [3] = "No such process",
@@ -18,13 +23,13 @@ static const char *errs[MAX_ERROR] = {
     [13] = "Permission denied",
     [14] = "Bad address",
     [15] = "Block device required",
-    [16] = "Device / Resource busy",
+    [16] = "Resource busy",
     [17] = "File exists",
     [18] = "Cross-device link",
     [19] = "Operation not supported by device",
     [20] = "Not a directory",
     [21] = "Is a directory",
-    [22] = "nvalid argument",
+    [22] = "Invalid argument",
     [23] = "Too many open files in system",
     [24] = "Too many open files",
     [25] = "Inappropriate ioctl for device",
@@ -85,12 +90,12 @@ static const char *errs[MAX_ERROR] = {
     [80] = "Authentication error",
     [81] = "Need authenticator",
     [82] = "Device power is off",
-    [83] = "Device error, e.g. paper out",
+    [83] = "Device error",
     [84] = "Value too large to be stored in data type",
-    [85] = "Bad executable",
+    [85] = "Bad executable (or shared library)",
     [86] = "Bad CPU type in executable",
     [87] = "Shared library version mismatch",
-    [88] = "Malformed Macho file",
+    [88] = "Malformed Mach-o file",
     [89] = "Operation canceled",
     [90] = "Identifier removed",
     [91] = "No message of desired type",
@@ -105,7 +110,7 @@ static const char *errs[MAX_ERROR] = {
     [100] = "Protocol error",
     [101] = "STREAM ioctl timeout",
     [102] = "Operation not supported on socket",
-    [103] = "No such policy registered",
+    [103] = "Policy not found",
     [104] = "State not recoverable",
     [105] = "Previous owner died",
     [106] = "Interface output queue is full"};
@@ -113,8 +118,8 @@ static const char *errs[MAX_ERROR] = {
 #endif
 
 #if defined(__linux__)
-
-static const char *errs[MAX_ERROR] = {
+char error_mes[100] = "Unknown error: ";
+char *errs[MAX_ERROR] = {
     [0] = "Success",
     [1] = "Operation not permitted",
     [2] = "No such file or directory",
@@ -253,13 +258,11 @@ static const char *errs[MAX_ERROR] = {
 #endif
 
 char *s21_strerror(int errnum) {
-  static char res[BUFFER_S] = {'\0'};
-
-  if (errnum < 0 || errnum >= MAX_ERROR) {
-    s21_sprintf(res, "Unknown error: %d", errnum);
-  } else {
-    s21_strcpy(res, errs[errnum]);
+  int unknow = 1;
+  static char message[128];
+  if (errnum < 0 && errnum > MAX_ERROR) {
+    sprintf(message, "%s%d", error_mes, errnum);
+    unknow = 0;
   }
-
-  return res;
+  return (unknow) ? errs[errnum] : message;
 }

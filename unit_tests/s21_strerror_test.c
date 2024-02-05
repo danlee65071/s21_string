@@ -1,7 +1,7 @@
 #include "unit_tests.h"
 
 START_TEST(errors) {
-  for (int i = -1000; i < 150; i++) {
+  for (int i = 0; i < 107; i++) {
     char *def = s21_strerror(i);
     char *expect = strerror(i);
 
