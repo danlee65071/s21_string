@@ -25,6 +25,7 @@ int main() {
   case_test(s21_strrchr_test(), result);
   case_test(s21_strchr_test(), result);
   case_test(s21_strpbrk_test(), result);
+  case_test(s21_to_upper_test(), result);
 
   for (int i = 0; i < numTests; i++) {
     if (result[i] != 0) {

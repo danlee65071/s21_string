@@ -1,7 +1,7 @@
 #include "s21_strerror.h"
 
 #include "s21_string.h"
-#include "string.h"
+#include "string.h"  // не забудь удалить
 
 #if defined(__APPLE__)
 
@@ -261,7 +261,8 @@ char *s21_strerror(int errnum) {
   int unknow = 1;
   static char message[128];
   if (errnum < 0 && errnum > MAX_ERROR) {
-    sprintf(message, "%s%d", error_mes, errnum);
+    sprintf(message, "%s%d", error_mes,
+            errnum);  // исправь позже на s21_sprintf
     unknow = 0;
   }
   return (unknow) ? errs[errnum] : message;
