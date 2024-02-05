@@ -9,11 +9,7 @@ void case_test(Suite *s, int *fail) {
 }
 
 int main() {
-<<<<<<< HEAD
   int numTests = 8;
-=======
-  int numTests = 1;
->>>>>>> 326e2642062fdc77d187bb6d8aaa0e6a95a37744
   int result[numTests];
   int fail = 0;
 
@@ -24,11 +20,8 @@ int main() {
   case_test(s21_strncat_test(), result);
   case_test(s21_strncmp_test(), result);
   case_test(s21_strncpy_test(), result);
-<<<<<<< HEAD
   case_test(s21_trim_test(), result);
-=======
   case_test(s21_strrchr_test(), result);
->>>>>>> 326e2642062fdc77d187bb6d8aaa0e6a95a37744
 
   for (int i = 0; i < numTests; i++) {
     if (result[i] != 0) {
