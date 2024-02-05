@@ -20,6 +20,7 @@ int main() {
   case_test(s21_strncat_test(), result);
   case_test(s21_strncmp_test(), result);
   case_test(s21_strncpy_test(), result);
+  case_test(s21_strerror_test(), result);
 
   for (int i = 0; i < numTests; i++) {
     if (result[i] != 0) {
