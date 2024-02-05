@@ -92,7 +92,6 @@ START_TEST(s21_strrchr_13) {
 }
 END_TEST
 
-
 START_TEST(s21_strrchr_14) {
   char str1[] = "ab,c";
   int n = ',';
