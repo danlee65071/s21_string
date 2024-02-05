@@ -20,4 +20,3 @@ char *s21_strrchr(const char* str, int c) {
     }
     return simbol ? (char*)str : NULL;
 }
-
