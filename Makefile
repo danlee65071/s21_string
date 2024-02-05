@@ -24,7 +24,7 @@ endif
 all: $(NAME)
 
 $(NAME): $(PATH_OBJS)
-	ar rcs $(NAME) $(PATH_OBJS)
+	ar rcs $(NAME) $(PATH_OBJS)ч
 
 $(DIR_OBJS)/%.o: %.c Makefile $(HEADERS)
 	@# -p ишнорирует ошибку 
