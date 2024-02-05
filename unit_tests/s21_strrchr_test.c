@@ -36,90 +36,93 @@ START_TEST(s21_strrchr_5) {
 }
 END_TEST
 
-START_TEST(strrchr_6) {
+START_TEST(s21_strrchr_6) {
   char str1[] = "abc";
   int n = '1';
   ck_assert_ptr_eq(strrchr(str1, n), s21_strrchr(str1, n));
 }
 END_TEST
 
-START_TEST(strrchr_7) {
+START_TEST(s21_strrchr_7) {
   char str1[] = "оарк";
   int n = '\\';
   ck_assert_ptr_eq(strrchr(str1, n), s21_strrchr(str1, n));
 }
 END_TEST
 
-START_TEST(strrchr_8) {
+START_TEST(s21_strrchr_8) {
   char str1[] = " ";
   int n = ' ';
   ck_assert_ptr_eq(strrchr(str1, n), s21_strrchr(str1, n));
 }
 END_TEST
 
-START_TEST(strrchr_9) {
+START_TEST(s21_strrchr_9) {
   char str1[] = " ";
   int n = '\\';
   ck_assert_ptr_eq(strrchr(str1, n), s21_strrchr(str1, n));
 }
 END_TEST
 
-START_TEST(strrchr_10) {
+START_TEST(s21_strrchr_10) {
   char str1[] = "021";
   int n = '0';
   ck_assert_ptr_eq(strrchr(str1, n), s21_strrchr(str1, n));
 }
 END_TEST
 
-START_TEST(strrchr_11) {
+START_TEST(s21_strrchr_11) {
+
   char str1[] = "ab\nc";
   int n = '\n';
   ck_assert_ptr_eq(strrchr(str1, n), s21_strrchr(str1, n));
 }
 END_TEST
 
-START_TEST(strrchr_12) {
+START_TEST(s21_strrchr_12) {
+
   char str1[] = "";
   int n = '\0';
   ck_assert_ptr_eq(strrchr(str1, n), s21_strrchr(str1, n));
 }
 END_TEST
 
-START_TEST(strrchr_13) {
+START_TEST(s21_strrchr_13) {
   char str1[] = "\0\0\0";
   int n = '\0';
   ck_assert_ptr_eq(strrchr(str1, n), s21_strrchr(str1, n));
 }
 END_TEST
 
-START_TEST(strrchr_14) {
+START_TEST(s21_strrchr_14) {
   char str1[] = "ab,c";
   int n = ',';
   ck_assert_ptr_eq(strrchr(str1, n), s21_strrchr(str1, n));
 }
 END_TEST
 
-
 Suite *s21_strrchr_test(void) {
 
-    Suite *s = suite_create("s21_strrchr");
-    TCase *tc = tcase_create("case_s21_strrchr");
+  Suite *s = suite_create("s21_strrchr");
+  TCase *tc = tcase_create("case_s21_strrchr");
 
-    tcase_add_test(tc, s21_strrchr_1);
-    tcase_add_test(tc, s21_strrchr_2);
-    tcase_add_test(tc, s21_strrchr_3);
-    tcase_add_test(tc, s21_strrchr_4);
-    tcase_add_test(tc, s21_strrchr_5);
-    tcase_add_test(tc, strrchr_6);
-    tcase_add_test(tc, strrchr_7);
-    tcase_add_test(tc, strrchr_8);
-    tcase_add_test(tc, strrchr_9);
-    tcase_add_test(tc, strrchr_10);
-    tcase_add_test(tc, strrchr_11);
-    tcase_add_test(tc, strrchr_12);
-    tcase_add_test(tc, strrchr_13);
-    tcase_add_test(tc, strrchr_14);
+  tcase_add_test(tc, s21_strrchr_1);
+  tcase_add_test(tc, s21_strrchr_2);
+  tcase_add_test(tc, s21_strrchr_3);
+  tcase_add_test(tc, s21_strrchr_4);
+  tcase_add_test(tc, s21_strrchr_5);
+  tcase_add_test(tc, s21_strrchr_6);
+  tcase_add_test(tc, s21_strrchr_7);
+  tcase_add_test(tc, s21_strrchr_8);
+  tcase_add_test(tc, s21_strrchr_9);
+  tcase_add_test(tc, s21_strrchr_10);
+  tcase_add_test(tc, s21_strrchr_11);
+  tcase_add_test(tc, s21_strrchr_12);
+  tcase_add_test(tc, s21_strrchr_13);
+  tcase_add_test(tc, s21_strrchr_14);
+  
 
-    suite_add_tcase(s, tc);
-    return s;
+  suite_add_tcase(s, tc);
+  return s;
 }
+
