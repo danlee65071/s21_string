@@ -1,7 +1,7 @@
 NAME = s21_string.a 
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g -std=c11
-SRC = s21_memcmp.c s21_memchr.c s21_memset.c s21_strlen.c s21_strncat.c s21_strncmp.c s21_strncpy.c s21_memcpy.c s21_strrchr.c s21_strchr.c s21_strpbrk.c s21_strerror.c s21_to_upper.c s21_trim.c s21_to_lower.c s21_strstr.c s21_strstr.c s21_strcspn.c
+SRC = s21_memcmp.c s21_memchr.c s21_memset.c s21_strlen.c s21_strncat.c s21_strncmp.c s21_strncpy.c s21_memcpy.c s21_strrchr.c s21_strchr.c s21_strpbrk.c s21_strerror.c s21_to_upper.c s21_trim.c s21_to_lower.c s21_strstr.c s21_strcspn.c
 HEADERS = s21_string.h
 DIR_OBJS = objs
 OBJS = $(patsubst %.c, %.o, $(SRC)) # s21_string.o
