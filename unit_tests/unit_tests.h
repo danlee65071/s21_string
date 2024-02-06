@@ -20,5 +20,6 @@ Suite *s21_strrchr_test(void);
 Suite *s21_strchr_test(void);
 Suite *s21_strpbrk_test(void);
 Suite *s21_to_upper_test(void);
+Suite *s21_strtok_test(void);
 
 #endif
