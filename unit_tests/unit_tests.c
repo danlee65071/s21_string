@@ -9,7 +9,7 @@ void case_test(Suite *s, int *fail) {
 }
 
 int main() {
-  int numTests = 12;
+  int numTests = 14;
   int result[numTests];
   int fail = 0;
 
@@ -25,6 +25,8 @@ int main() {
   case_test(s21_memcpy_test(), result);
   case_test(s21_strchr_test(), result);
   case_test(s21_strpbrk_test(), result);
+  case_test(s21_to_upper_test(), result);
+  case_test(s21_to_lower_test(), result);
   case_test(s21_strstr_test(), result);
   case_test(s21_strcspn_test(), result);
 
@@ -33,5 +35,6 @@ int main() {
       fail = 1;
     }
   }
+
   return fail;
 }
