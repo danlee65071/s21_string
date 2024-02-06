@@ -6,6 +6,18 @@
 
 #define s21_NULL (void *)0
 
+typedef struct s_flags{
+    char specifier;
+    bool minus;
+    bool sign;
+    bool hashtag;
+    bool zero;
+    int width;
+    int precision;
+    char length;
+    bool star;
+} t_flags;
+
 void *s21_memchr(const void *str, int c, size_t n);
 void *s21_memset(void *str, int c, size_t n);
 int s21_memcmp(const void *str1, const void *str2, size_t n);
