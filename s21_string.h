@@ -21,5 +21,6 @@ char *s21_strchr(const char *str, int c);
 char *s21_strpbrk(const char *str1, const char *str2);
 void *s21_to_upper(const char *str);
 void *s21_to_lower(const char *str);
+char *s21_strstr(const char *haystack, const char *needle);
 
 #endif

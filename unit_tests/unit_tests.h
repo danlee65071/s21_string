@@ -21,5 +21,6 @@ Suite *s21_strchr_test(void);
 Suite *s21_strpbrk_test(void);
 Suite *s21_to_upper_test(void);
 Suite *s21_to_lower_test(void);
+Suite *s21_strstr_test(void);
 
 #endif
