@@ -28,6 +28,7 @@ int main() {
   case_test(s21_to_upper_test(), result);
   case_test(s21_to_lower_test(), result);
   case_test(s21_strstr_test(), result);
+  case_test(s21_strcspn_test(), result);
 
   for (int i = 0; i < numTests; i++) {
     if (result[i] != 0) {
