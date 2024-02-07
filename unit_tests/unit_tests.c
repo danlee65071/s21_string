@@ -30,6 +30,7 @@ int main() {
   case_test(s21_strstr_test(), result);
   case_test(s21_strcspn_test(), result);
   case_test(s21_insert_test(), result);
+  case_test(s21_strtok_test(), result);
 
   for (int i = 0; i < numTests; i++) {
     if (result[i] != 0) {
