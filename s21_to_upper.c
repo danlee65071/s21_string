@@ -8,13 +8,13 @@ void *s21_to_upper(const char *str) {
     int i = 0;
     while (str[i] != '\0') {
       if (str[i] >= 'a' && str[i] <= 'z') {
-        upper[i] = str[i] - 32;
+        upper[i] = str[i] - 32;  // ASCII 97('a') - 65('A') == 32
       } else {
         upper[i] = str[i];
       }
       i++;
     }
-    upper[i] = '\0';
+    upper[i] = '\0';  // обозначение конца новой строки
   }
   return upper;
 }
