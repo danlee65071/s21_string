@@ -6,17 +6,17 @@
 
 #define s21_NULL (void *)0
 
-typedef struct s_flags{
-    char specifier;
-    bool minus;
-    bool sign;
-    bool hashtag;
-    bool zero;
-    int width;
-    int precision;
-    char length;
-    bool star;
-} t_flags;
+// typedef struct s_flags{
+//     char specifier;
+//     bool minus;
+//     bool sign;
+//     bool hashtag;
+//     bool zero;
+//     int width;
+//     int precision;
+//     char length;
+//     bool star;
+// } t_flags;
 
 void *s21_memchr(const void *str, int c, size_t n);
 void *s21_memset(void *str, int c, size_t n);
@@ -35,4 +35,6 @@ void *s21_to_upper(const char *str);
 void *s21_to_lower(const char *str);
 char *s21_strstr(const char *haystack, const char *needle);
 size_t s21_strcspn(const char *str1, const char *str2);
+void *insert(const char *src, const char *str, size_t start_index);
+
 #endif
