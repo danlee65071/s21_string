@@ -23,5 +23,6 @@ Suite *s21_to_upper_test(void);
 Suite *s21_to_lower_test(void);
 Suite *s21_strstr_test(void);
 Suite *s21_strcspn_test(void);
+Suite *s21_insert_test(void);
 
 #endif
