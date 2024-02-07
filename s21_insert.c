@@ -27,7 +27,7 @@ void additionFunc(const char* fstStr, const char* secStr, size_t idx, char* resu
 
 void *s21_insert(const char *src, const char *str, size_t start_index) {
     char* resultStr = s21_NULL;
-    if (src && str && (resultStr = malloc(s21_strlen(src) + s21_strlen(str) + 1 * sizeof(char)))) {
+    if (src && str && (resultStr = malloc(s21_strlen(src) + s21_strlen(str) * sizeof(char)))) {
         if (start_index > 0) {
             additionFunc(src, str, start_index, resultStr);
         } else {
