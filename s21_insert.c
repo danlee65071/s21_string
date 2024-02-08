@@ -35,8 +35,7 @@ void additionFunc(const char* fstStr, const char* secStr, size_t idx, char** res
             for (size_t k = 0; k < s21_strlen(secStr); k++)
                 (*resultStr)[i++] = secStr[k];
         }
-        else
-            (*resultStr)[i++] = fstStr[j++];
+        (*resultStr)[i++] = fstStr[j++];
     }
     (*resultStr)[i] = '\0';
 }
