@@ -9,7 +9,7 @@ void case_test(Suite *s, int *fail) {
 }
 
 int main() {
-  int numTests = 8;
+  int numTests = 14;
   int result[numTests];
   int fail = 0;
 
@@ -32,5 +32,6 @@ int main() {
       fail = 1;
     }
   }
+
   return fail;
 }

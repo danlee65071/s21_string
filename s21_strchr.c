@@ -5,7 +5,7 @@
 // в строке, на которую указывает аргумент str.
 
 char *s21_strchr(const char *str, int c) {
-  char *pos = NULL;
+  char *pos = s21_NULL;
   while ((*str != '\0') && (*str != c)) {
     str++;
   }
