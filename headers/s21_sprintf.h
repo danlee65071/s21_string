@@ -1,8 +1,8 @@
 #ifndef S21_SPRINTF_H
 #define S21_SPRINTF_H
 
-#define NUM_FLAGS 5
 #define SPECIFIERS "cdfsugGeExXop%%"
+#define NUM_FLAGS 5
 #define FLAGS "-+ #0"
 
 #include <stdarg.h>
@@ -11,7 +11,7 @@
 
 typedef struct s_flags {
   char flag;
-  uint8_t count;
+  bool is;
 } t_flags;
 
 typedef struct s_sprintf {
@@ -24,5 +24,9 @@ typedef struct s_sprintf {
 
 int parse_format(char **str, const char *format, va_list arglist);
 void init_flags(t_sprintf* sprintf_args);
+void process_percent(char **str, const char *format, \
+    va_list arglist, t_sprintf* sprintf_args, int* count, int* i);
+bool is_in_str(const char c, const char* str);
+void parse_flags(const char *format, t_sprintf* sprintf_args, int* i);
 
 #endif

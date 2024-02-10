@@ -5,6 +5,6 @@ void init_flags(t_sprintf* sprintf_args)
     for (uint8_t i = 0; i < NUM_FLAGS; i++)
     {
         sprintf_args->flags[i].flag = FLAGS[i];
-        sprintf_args->flags[i].count = 0;
+        sprintf_args->flags[i].is = false;
     }
 }
