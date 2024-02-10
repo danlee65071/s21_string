@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define s21_NULL (void *)0
+
 void *s21_memchr(const void *str, int c, size_t n);
 void *s21_memset(void *str, int c, size_t n);
 int s21_memcmp(const void *str1, const void *str2, size_t n);

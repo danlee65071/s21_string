@@ -28,7 +28,9 @@ SRCS = $(UTILS_PATHS)
 DIRS = $(UTILS_DIR)
 ## sprintf
 SPRINTF_DIR = sprintf
-SPRINTF_SRCS = s21_sprintf.c
+SPRINTF_SRCS = s21_sprintf.c \
+	parse_format.c \
+	init_flags.c
 SPRINTF_PATHS = $(addprefix $(UTILS_DIR)/, $(UTILS_SRCS))
 SRCS += $(SPRINTF_PATHS)
 DIRS += $(SPRINTF_DIR)
@@ -40,7 +42,8 @@ SRCS_PATH = $(addprefix $(SRCS_DIR)/, $(SRCS))
 HEADERS_DIR = headers
 HEADERS = s21_string.h \
 	s21_utils.h \
-	s21_strerror.h
+	s21_strerror.h \
+	s21_sprintf.h
 HEADERS_PATH = $(addprefix $(HEADERS_DIR)/, $(HEADERS))
 
 # objs
