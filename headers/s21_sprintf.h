@@ -2,6 +2,8 @@
 #define S21_SPRINTF_H
 
 #define NUM_FLAGS 5
+#define SPECIFIERS "cdfsugGeExXop%%"
+#define FLAGS "-+ #0"
 
 #include <stdarg.h>
 #include "s21_utils.h"
@@ -19,9 +21,6 @@ typedef struct s_sprintf {
   int precision;
   char length;
 } t_sprintf;
-
-const char* s21_sprintf_specifiers = "cdfsugGeExXop%%";
-const char* s21_sprintf_flags = "-+ #0";
 
 int parse_format(char **str, const char *format, va_list arglist);
 void init_flags(t_sprintf* sprintf_args);

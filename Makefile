@@ -54,8 +54,10 @@ CREATES_DIR = $(addprefix $(OBJS_DIR)/, $(DIRS))
 
 # Tests
 DIR_TESTS = unit_tests
-SRC_TESTS = unit_tests.c \
-	s21_memcmp_test.c \
+SRC_TESTS = unit_tests.c
+## Utils
+UTILS_TESTS_DIR = utils
+UTILS_TESTS = s21_memcmp_test.c \
 	s21_memchr_test.c \
 	s21_memset_test.c \
 	s21_strlen_test.c \
@@ -73,6 +75,9 @@ SRC_TESTS = unit_tests.c \
 	s21_strstr_test.c \
 	s21_strcspn_test.c \
 	s21_strtok_test.c
+UTILS_TESTS_PATH = $(addprefix $(UTILS_TESTS_DIR)/, $(UTILS_TESTS))
+SRC_TESTS += $(UTILS_TESTS_PATH)
+## PATH_SRC_TESTS
 PATH_SRC_TESTS = $(addprefix $(DIR_TESTS)/, $(SRC_TESTS))
 NAME_TEST = s21_string_test
 
@@ -95,8 +100,8 @@ $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c Makefile $(HEADERS_PATH)
 	mkdir -p $(CREATES_DIR)
 	$(CC) $(CFLAGS) -I $(HEADERS_DIR) -c $< -o $@
 
-test: $(NAME)
-	$(CC) $(CFLAGS) -I $(HEADERS_DIR) $(PATH_SRC_TESTS) $(LIBS) $(NAME) -o $(NAME_TEST)
+test: $(NAME) $(PATH_SRC_TESTS)
+	$(CC) $(CFLAGS) -I $(HEADERS_DIR) -I $(DIR_TESTS) $(PATH_SRC_TESTS) $(LIBS) $(NAME) -o $(NAME_TEST)
 	$(LEAKS) ./$(NAME_TEST)
 	rm -f $(NAME_TEST)
 
