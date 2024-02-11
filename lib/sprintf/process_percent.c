@@ -5,4 +5,9 @@ void process_percent(char **str, const char *format, \
 {
     (*i)++;
     parse_flags(format, sprintf_args, i);
+    parse_width();
+    parse_precision();
+    parse_length();
+    parse_specifiers();
+    process();
 }
