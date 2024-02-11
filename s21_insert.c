@@ -4,27 +4,6 @@
 // в указанную позицию (start_index) в данной строке (src). 
 // В случае какой-либо ошибки следует вернуть значение NULL.
 
-// void additionFunc(const char* fstStr, const char* secStr, size_t idx, char* resultStr) {
-//     size_t i = 0;
-//     size_t j = 0;
-//     while (*(fstStr + j) != '\0') {
-//         *(resultStr + i) = *(fstStr + j);
-//         if (i == idx) {
-//             j = 0;
-//             while (*(secStr + j) != '\0') {
-//                 *(resultStr + i) = *(secStr + j);
-//                 i++;
-//                 j++;
-//             }
-//             j = i - j - 1;
-//             i--;
-//         }
-//         i++;
-//         j++;       
-//     }
-//     *(resultStr + i) = '\0';
-// }
-
 void additionFunc(const char* fstStr, const char* secStr, size_t idx, char** resultStr)
 {
     size_t i = 0;
