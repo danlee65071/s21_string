@@ -9,5 +9,5 @@ void process_percent(char **str, const char *format, \
     parse_precision();
     parse_length();
     parse_specifiers();
-    process();
+    // process();
 }

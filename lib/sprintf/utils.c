@@ -9,8 +9,3 @@ bool is_in_str(const char c, const char* str)
             return true;
     return false;
 }
-
-int process_star()
-{
-    
-}
