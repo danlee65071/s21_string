@@ -5,5 +5,5 @@
 // вычисляет длину строки str до завершающего нулевого символа, но не включая его.
 
 size_t s21_strlen(const char *str) {
-    return (int)(sizeof(str) - 1);
+    return (size_t)(s21_strchr(str, 0) - str);
 }
