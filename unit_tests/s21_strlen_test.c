@@ -24,6 +24,12 @@ START_TEST(s21_strlen_4) {
 }
 END_TEST
 
+START_TEST(s21_strlen_5) {
+  char *str = "   ";
+  ck_assert_int_eq(strlen(str), s21_strlen(str));
+}
+END_TEST
+
 Suite *s21_strlen_test(void) {
   Suite *s = suite_create("s21_strlen");
   TCase *tc = tcase_create("case_s21_strlen");
@@ -31,6 +37,7 @@ Suite *s21_strlen_test(void) {
   tcase_add_test(tc, s21_strlen_2);
   tcase_add_test(tc, s21_strlen_3);
   tcase_add_test(tc, s21_strlen_4);
+  tcase_add_test(tc, s21_strlen_5);
   suite_add_tcase(s, tc);
   return s;
 }
