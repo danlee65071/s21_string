@@ -22,8 +22,8 @@ START_TEST(s21_strstr_3) {
 END_TEST
 
 START_TEST(s21_strstr_4) {
-  char* str1;
-  char* str2;
+  char *str1;
+  char *str2;
   str1 = "ab\012";
   str2 = "1\02ab";
   ck_assert_ptr_eq(strstr(str1, str2), s21_strstr(str1, str2));
@@ -156,7 +156,7 @@ START_TEST(s21_strstr_20) {
   char str2[] = "1\02ab";
   ck_assert_ptr_eq(strstr(str1, str2), s21_strstr(str1, str2));
 }
-END_TEST  
+END_TEST
 
 START_TEST(s21_strstr_21) {
   char str1[100] = "Sunny";
@@ -168,8 +168,6 @@ START_TEST(s21_strstr_21) {
   ck_assert_ptr_eq(res1, res2);
 }
 END_TEST
-
-
 
 Suite *s21_strstr_test(void) {
 
@@ -197,7 +195,6 @@ Suite *s21_strstr_test(void) {
   tcase_add_test(tc, s21_strstr_19);
   tcase_add_test(tc, s21_strstr_20);
   tcase_add_test(tc, s21_strstr_21);
-  
 
   suite_add_tcase(s, tc);
   return s;
