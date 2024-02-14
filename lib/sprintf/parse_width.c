@@ -10,6 +10,7 @@ void parse_width(const char *format, va_list arglist, t_sprintf *sprintf_args,
     char *buf = calloc(1024 * sizeof(char));
 
     if (buf == NULL) {
+      printf("Ошибка: не удалось выделить память для buf\n");
       return;
     }
     int index = 0;
@@ -20,13 +21,12 @@ void parse_width(const char *format, va_list arglist, t_sprintf *sprintf_args,
       if (index >= buf_size) {
         buf = realloc(buf, buf_size * 2);
         if (buf == NULL) {
-          free(buf);
           return;
         }
         buf_size *= 2;
       }
     }
-    sprintf_args->width = s21_atoi(buf);
     free(buf);
+    sprintf_args->width = s21_atoi(buf);
   }
 }
