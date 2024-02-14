@@ -1,5 +1,7 @@
 #include "s21_string.h"
 
+// парсер модификатора точности
+
 void parse_precision(const char *format, va_list arglist, t_sprintf* sprintf_args, int* i) {
     if (*(format + i) == "*") {
         sprintf_args->width = va_arg(arglist, int);
