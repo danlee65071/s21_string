@@ -7,6 +7,7 @@
 
 #include <stdarg.h>
 #include <ctype.h>
+
 #include "s21_utils.h"
 #include "s21_strerror.h"
 
