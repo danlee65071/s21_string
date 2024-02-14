@@ -3,9 +3,9 @@
 
 #include <check.h>
 #include <stdlib.h>
-
 #include "s21_string.h"
 
+// utils
 Suite *s21_memcmp_test(void);
 Suite *s21_memchr_test(void);
 Suite *s21_memset_test(void);
