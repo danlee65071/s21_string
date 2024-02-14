@@ -4,7 +4,7 @@ START_TEST(s21_trim_1) {
   char src[100] = " Hello world! ";
   char chars_trim[100] = " ";
   char *res = "Hello world!";
-  char* str_trim = s21_trim(src, chars_trim);
+  char *str_trim = s21_trim(src, chars_trim);
   ck_assert_str_eq(str_trim, res);
   free(str_trim);
 }
@@ -14,7 +14,7 @@ START_TEST(s21_trim_2) {
   char src[100] = "   Hello world   ";
   char chars_trim[100] = " ";
   char *res = "Hello world";
-  char* str_trim = s21_trim(src, chars_trim);
+  char *str_trim = s21_trim(src, chars_trim);
   ck_assert_str_eq(str_trim, res);
   free(str_trim);
 }
@@ -24,7 +24,7 @@ START_TEST(s21_trim_3) {
   char src[100] = "dhdjdjajdadh@#@#@#@#@##@";
   char chars_trim[100] = "@:Q:Q:Q:Q:;";
   char *res = "dhdjdjajdadh@#@#@#@#@##";
-  char* str_trim = s21_trim(src, chars_trim);
+  char *str_trim = s21_trim(src, chars_trim);
   ck_assert_str_eq(str_trim, res);
   free(str_trim);
 }

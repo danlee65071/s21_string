@@ -49,7 +49,6 @@ START_TEST(s21_strncat_7) {
 }
 END_TEST
 
-
 Suite *s21_strncat_test(void) {
   Suite *s = suite_create("s21_strncat");
   TCase *tc = tcase_create("case_s21_strncat");
