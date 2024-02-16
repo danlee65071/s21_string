@@ -1,9 +1,9 @@
 #include "s21_string.h"
 
 void parse_length(const char *format, va_list arglist, t_sprintf* sprintf_args, int* i) {
-    if (*(format + i) == "*") {
+    if (*(format + *i) == '%') {
         sprintf_args->width = va_arg(arglist, int);
-        (*i)++;
+        (*i)++; 
     int buf_size = 1024;
     char *buf = calloc(1024 * sizeof(char));
 

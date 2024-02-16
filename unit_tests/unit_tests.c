@@ -9,8 +9,7 @@ void case_test(Suite *s, int *fail)
     srunner_free(runner);
 }
 
-int main()
-{
+int main() {
     Suite* (*utils_tests_funcs[]) () = {s21_memcmp_test, \
                                         s21_memchr_test, \
                                         s21_memset_test, \
