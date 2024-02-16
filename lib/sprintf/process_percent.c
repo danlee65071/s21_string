@@ -6,9 +6,7 @@ void process_percent(char **str, const char *format, \
     (*i)++;
     parse_flags(format, sprintf_args, i);
     parse_width();
-    if (*(format + i) == '.') {
-        parse_precision(*(format), sprintf_args, i);
-    }
+    parse_precision(format, sprintf_args, i);
     parse_length();
     parse_specifiers();
     // process();

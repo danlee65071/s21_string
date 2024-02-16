@@ -30,5 +30,6 @@ void process_percent(char **str, const char *format, \
     va_list arglist, t_sprintf* sprintf_args, int* count, int* i);
 bool is_in_str(const char c, const char* str);
 void parse_flags(const char *format, t_sprintf* sprintf_args, int* i);
+void parse_precision(const char *format, va_list arglist, t_sprintf* sprintf_args, int* i);
 
 #endif
