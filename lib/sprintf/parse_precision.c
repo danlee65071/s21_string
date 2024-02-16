@@ -17,7 +17,7 @@ void parse_precision(const char *format, va_list arglist, t_sprintf* sprintf_arg
         while ((isdigit(*(format + *i))) || (*(format + *i) == '\0')) {
             buf[idx] = (int)(*(format + *i) - 48);
             (*i)++;
-            index++;
+            idx++;
             if (index >= buf_size) {
                 buf = realloc(buf, buf_size * 2);
                 if (buf == NULL) {
