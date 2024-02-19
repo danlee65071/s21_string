@@ -16,7 +16,7 @@ typedef struct s_flags {
 
 typedef struct s_sprintf {
   char specifier;
-  t_flags flags[5];
+  t_flags flags[NUM_FLAGS];
   int width;
   int precision;
   char length;
