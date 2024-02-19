@@ -1,6 +1,7 @@
-#ifndef S21_STRING_H
-#define S21_STRING_H
+#ifndef S21_UTILS_H
+#define S21_UTILS_H
 
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
