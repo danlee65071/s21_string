@@ -3,3 +3,4 @@ objs
 s21_string.a
 s21_string_test.dSYM
 .vscode
+test.c

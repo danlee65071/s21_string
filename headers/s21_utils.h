@@ -1,22 +1,9 @@
-#ifndef S21_STRING_H
-#define S21_STRING_H
+#ifndef S21_UTILS_H
+#define S21_UTILS_H
 
-#include <stdarg.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
-
-typedef struct s_flags {
-  char specifier;
-  bool minus;
-  bool sign;
-  bool hashtag;
-  bool zero;
-  int width;
-  int precision;
-  char length;
-  bool star;
-} t_flags;
 
 #define s21_NULL (void *)0
 
