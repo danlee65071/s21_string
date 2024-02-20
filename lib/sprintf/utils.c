@@ -53,3 +53,33 @@ int str_to_int(char *str) {
 
   return num;
 }
+
+void parse_precision_width(const char *format, va_list arglist, t_sprintf *sprintf_args, int *i) {
+  if (*(format + *i) == "*") {
+          sprintf_args->width = va_arg(arglist, int);
+          (*i)++;
+  } else if (is_digit(format[*i])) {
+      int buf_size = 1024;
+      char *buf = calloc(buf_size, sizeof(char));
+
+      if (buf == s21_NULL) {
+          return;
+      }
+      int idx = 0;
+      while ((isdigit(*(format + *i)))) {
+          buf[idx] = *(format + *i);
+          (*i)++;
+          idx++;
+          if (idx >= buf_size) {
+              buf = realloc(buf, buf_size * 2);
+              if (buf == s21_NULL) {
+                  free(buf);
+                  return;
+              }
+              buf_size *= 2;
+          }
+          sprintf_args->width = s21_atoi(buf);
+          free(buf);
+      }
+  } 
+} 
