@@ -18,4 +18,4 @@ void *s21_to_lower(const char *str) {
         *(lowerStr + i) = '\0';
     }
     return lowerStr;
-}
+}         

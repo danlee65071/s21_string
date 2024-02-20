@@ -15,8 +15,8 @@ START_TEST(s21_strtok_2) {
 END_TEST
 
 START_TEST(s21_strtok_3) {
-  char str1[100] = "wonder of you %^&@@";
-  char str2[100] = "%^@";
+  char str1[100] = "wonder of you ^&@@";
+  char str2[100] = "^@";
   ck_assert_str_eq(strtok(str1, str2), s21_strtok(str1, str2));
 }
 END_TEST
