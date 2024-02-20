@@ -6,8 +6,9 @@
 #define FLAGS "-+ #0"
 
 #include <stdarg.h>
-#include "s21_utils.h"
+
 #include "s21_strerror.h"
+#include "s21_utils.h"
 
 typedef struct s_flags {
   char flag;
@@ -23,10 +24,12 @@ typedef struct s_sprintf {
 } t_sprintf;
 
 int parse_format(char **str, const char *format, va_list arglist);
-void init_flags(t_sprintf* sprintf_args);
-void process_percent(char **str, const char *format, \
-    va_list arglist, t_sprintf* sprintf_args, int* count, int* i);
-bool is_in_str(const char c, const char* str);
-void parse_flags(const char *format, t_sprintf* sprintf_args, int* i);
+void init_flags(t_sprintf *sprintf_args);
+void process_percent(char **str, const char *format, va_list arglist,
+                     t_sprintf *sprintf_args, int *count, int *i);
+bool is_in_str(const char c, const char *str);
+void parse_flags(const char *format, t_sprintf *sprintf_args, int *i);
+void parse_width(const char *format, va_list arglist, t_sprintf *sprintf_args,
+                 int *i);
 
 #endif
