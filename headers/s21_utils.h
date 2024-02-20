@@ -28,5 +28,4 @@ char *s21_strstr(const char *haystack, const char *needle);
 size_t s21_strcspn(const char *str1, const char *str2);
 void *s21_insert(const char *src, const char *str, size_t start_index);
 
-
 #endif
