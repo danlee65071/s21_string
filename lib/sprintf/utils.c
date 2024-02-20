@@ -55,7 +55,7 @@ int str_to_int(char *str) {
 }
 
 void parse_precision_width(const char *format, va_list arglist, t_sprintf *sprintf_args, int *i) {
-  if (*(format + *i) == "*") {
+  if (*(format + (*i)) == '*') {
           sprintf_args->width = va_arg(arglist, int);
           (*i)++;
   } else if (is_digit(format[*i])) {
@@ -66,7 +66,7 @@ void parse_precision_width(const char *format, va_list arglist, t_sprintf *sprin
           return;
       }
       int idx = 0;
-      while ((isdigit(*(format + *i)))) {
+      while ((is_digit(*(format + *i)))) {
           buf[idx] = *(format + *i);
           (*i)++;
           idx++;
