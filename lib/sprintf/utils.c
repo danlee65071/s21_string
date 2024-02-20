@@ -43,7 +43,7 @@ int s21_atoi(const char *str) {
   return res;
 }
 
-/* int str_to_int(char *str) {
+int str_to_int(char *str) {
   int num = 0;
   while (*str != '\0') {
     int dig = (int)*str - 48;  // some char '0' (ASCII 48) to decimal digit
@@ -52,4 +52,5 @@ int s21_atoi(const char *str) {
   }
 
   return num;
-} */
+}
+
