@@ -53,4 +53,3 @@ int str_to_int(char *str) {
 
   return num;
 }
-
