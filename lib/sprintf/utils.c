@@ -3,7 +3,8 @@
 bool is_in_str(const char c, const char *str) {
   uint8_t len = s21_strlen(str);
   for (uint8_t i = 0; i < len; i++)
-    if (c == str[i]) return true;
+    if (c == str[i])
+      return true;
   return false;
 }
 
@@ -16,7 +17,8 @@ int s21_atoi(const char *str) {
   int sign = 1;
   int overflow = 0;
 
-  while (*str == ' ') str++;
+  while (*str == ' ')
+    str++;
 
   if (*str == '-') {
     str++;
@@ -46,40 +48,41 @@ int s21_atoi(const char *str) {
 int str_to_int(char *str) {
   int num = 0;
   while (*str != '\0') {
-    int dig = (int)*str - 48;  // some char '0' (ASCII 48) to decimal digit
-    num = num * 10 + dig;  // перемещение числа на разряд влево
+    int dig = (int)*str - 48; // some char '0' (ASCII 48) to decimal digit
+    num = num * 10 + dig; // перемещение числа на разряд влево
     str++;
   }
 
   return num;
 }
 
-void parse_precision_width(const char *format, va_list arglist, int* value, int *i) {
+void parse_precision_width(const char *format, va_list arglist, int *value,
+                           int *i) {
   if (*(format + (*i)) == '*') {
-          *value = va_arg(arglist, int);
-          (*i)++;
+    *value = va_arg(arglist, int);
+    (*i)++;
   } else if (is_digit(format[*i])) {
-      int buf_size = 1024;
-      char *buf = calloc(buf_size, sizeof(char));
+    int buf_size = 1024;
+    char *buf = calloc(buf_size, sizeof(char));
 
-      if (buf == s21_NULL) {
-          return;
-      }
-      int idx = 0;
-      while ((is_digit(*(format + *i)))) {
-          buf[idx] = *(format + *i);
-          (*i)++;
-          idx++;
-          if (idx >= buf_size) {
-              buf = realloc(buf, buf_size * 2);
-              if (buf == s21_NULL) {
-                  free(buf);
-                  return;
-              }
-              buf_size *= 2;
-          }
-          *value = s21_atoi(buf);
+    if (buf == s21_NULL) {
+      return;
+    }
+    int idx = 0;
+    while ((is_digit(*(format + *i)))) {
+      buf[idx] = *(format + *i);
+      (*i)++;
+      idx++;
+      if (idx >= buf_size) {
+        buf = realloc(buf, buf_size * 2);
+        if (buf == s21_NULL) {
           free(buf);
+          return;
+        }
+        buf_size *= 2;
       }
-  } 
-} 
+      *value = s21_atoi(buf);
+      free(buf);
+    }
+  }
+}

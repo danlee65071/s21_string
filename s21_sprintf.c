@@ -26,7 +26,7 @@ char parse_format(char **str, const char *format, va_list arglist) {
 
 void process_percent(char **str, char *format, va_list arglist, t_flags *flags,
                      int *count, int *i) {
-  if (format[*i] == '\0') {  // уточнить конкретный спецификатор
+  if (format[*i] == '\0') { // уточнить конкретный спецификатор
     (*str)[*count++] = format[(*i)++];
     parse_flags(format, arglist, flags);
   }

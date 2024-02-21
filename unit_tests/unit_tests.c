@@ -23,6 +23,7 @@ int main() {
   for (uint8_t i = 0; i < utils_tests_count; i++)
     case_test(utils_tests_funcs[i](), result);
   for (uint8_t i = 0; i < num_test; i++)
-    if (result[i] != 0) fail = 1;
+    if (result[i] != 0)
+      fail = 1;
   return fail;
 }
