@@ -28,6 +28,6 @@ void process_percent(char **str, char *format, va_list arglist, t_flags *flags,
                      int *count, int *i) {
   if (format[*i] == '\0') {  // уточнить конкретный спецификатор
     (*str)[*count++] = format[(*i)++];
-    parse_flags(format, arglist, flags, i);
+    parse_flags(format, arglist, flags);
   }
 }

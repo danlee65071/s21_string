@@ -54,9 +54,9 @@ int str_to_int(char *str) {
   return num;
 }
 
-void parse_precision_width(const char *format, va_list arglist, t_sprintf *sprintf_args, int *i) {
+void parse_precision_width(const char *format, va_list arglist, int* value, int *i) {
   if (*(format + (*i)) == '*') {
-          sprintf_args->width = va_arg(arglist, int);
+          *value = va_arg(arglist, int);
           (*i)++;
   } else if (is_digit(format[*i])) {
       int buf_size = 1024;
@@ -78,7 +78,7 @@ void parse_precision_width(const char *format, va_list arglist, t_sprintf *sprin
               }
               buf_size *= 2;
           }
-          sprintf_args->width = s21_atoi(buf);
+          *value = s21_atoi(buf);
           free(buf);
       }
   } 
