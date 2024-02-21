@@ -1,4 +1,4 @@
-NAME = s21_string.a 
+NAME = s21_string.a
 CC = gcc
 CFLAGS = -Wall -Werror -Wextra -g -std=c11
 
@@ -34,7 +34,7 @@ SPRINTF_SRCS = s21_sprintf.c \
 	process_percent.c \
 	parse_flags.c \
 	utils.c
-SPRINTF_PATHS = $(addprefix $(UTILS_DIR)/, $(UTILS_SRCS))
+SPRINTF_PATHS = $(addprefix $(SPRINTF_DIR)/, $(SPRINTF_SRCS))
 SRCS += $(SPRINTF_PATHS)
 DIRS += $(SPRINTF_DIR)
 ## SRCS_PATH
@@ -80,6 +80,7 @@ UTILS_TESTS = s21_memcmp_test.c \
 	s21_strtok_test.c
 UTILS_TESTS_PATH = $(addprefix $(UTILS_TESTS_DIR)/, $(UTILS_TESTS))
 SRC_TESTS += $(UTILS_TESTS_PATH)
+
 ## PATH_SRC_TESTS
 PATH_SRC_TESTS = $(addprefix $(DIR_TESTS)/, $(SRC_TESTS))
 NAME_TEST = s21_string_test
@@ -107,6 +108,9 @@ test: $(NAME) $(PATH_SRC_TESTS)
 	$(CC) $(CFLAGS) -I $(HEADERS_DIR) -I $(DIR_TESTS) $(PATH_SRC_TESTS) $(LIBS) $(NAME) -o $(NAME_TEST)
 	$(LEAKS) ./$(NAME_TEST)
 	rm -f $(NAME_TEST)
+
+clang:
+	find . -iname *.c -o -iname *.h | xargs clang-format -i
 
 clean:
 	rm -rf $(OBJS_DIR) $(NAME)

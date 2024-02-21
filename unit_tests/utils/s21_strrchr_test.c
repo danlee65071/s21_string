@@ -118,9 +118,7 @@ Suite *s21_strrchr_test(void) {
   tcase_add_test(tc, s21_strrchr_12);
   tcase_add_test(tc, s21_strrchr_13);
   tcase_add_test(tc, s21_strrchr_14);
-  
 
   suite_add_tcase(s, tc);
   return s;
 }
-

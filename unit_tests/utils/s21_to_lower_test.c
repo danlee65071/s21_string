@@ -6,7 +6,8 @@ START_TEST(lower_test1) {
   char *lower = s21_to_lower(str);
 
   ck_assert_str_eq(lower, expect);
-  if (lower) free(lower);
+  if (lower)
+    free(lower);
 }
 END_TEST
 
@@ -16,7 +17,8 @@ START_TEST(lower_test2) {
   char *lower = s21_to_lower(str);
 
   ck_assert_str_eq(lower, expect);
-  if (lower) free(lower);
+  if (lower)
+    free(lower);
 }
 END_TEST
 
@@ -26,7 +28,8 @@ START_TEST(lower_test3) {
   char *lower = s21_to_lower(str);
 
   ck_assert_str_eq(lower, expect);
-  if (lower) free(lower);
+  if (lower)
+    free(lower);
 }
 END_TEST
 
@@ -36,7 +39,8 @@ START_TEST(lower_test4) {
   char *lower = s21_to_lower(str);
 
   ck_assert_str_eq(lower, expect);
-  if (lower) free(lower);
+  if (lower)
+    free(lower);
 }
 END_TEST
 
@@ -46,7 +50,8 @@ START_TEST(lower_test5) {
   char *lower = s21_to_lower(str);
 
   ck_assert_str_eq(lower, expect);
-  if (lower) free(lower);
+  if (lower)
+    free(lower);
 }
 END_TEST
 
