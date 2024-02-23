@@ -15,8 +15,8 @@ START_TEST(s21_strtok_2) {
 END_TEST
 
 START_TEST(s21_strtok_3) {
-  char str1[100] = "wonder of you %^&@@";
-  char str2[100] = "%^@";
+  char str1[100] = "wonder of you ^&@@";
+  char str2[100] = "^@";
   ck_assert_str_eq(strtok(str1, str2), s21_strtok(str1, str2));
 }
 END_TEST
@@ -56,7 +56,6 @@ START_TEST(s21_strtok_8) {
 }
 END_TEST
 
-
 Suite *s21_strtok_test(void) {
 
   Suite *s = suite_create("s21_strtok");
@@ -70,7 +69,7 @@ Suite *s21_strtok_test(void) {
   tcase_add_test(tc, s21_strtok_6);
   tcase_add_test(tc, s21_strtok_7);
   tcase_add_test(tc, s21_strtok_8);
-  
+
   suite_add_tcase(s, tc);
   return s;
 }

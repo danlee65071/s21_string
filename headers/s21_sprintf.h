@@ -6,8 +6,11 @@
 #define FLAGS "-+ #0"
 
 #include <stdarg.h>
+#include <ctype.h>
+
 #include "s21_utils.h"
 #include "s21_strerror.h"
+
 
 typedef struct s_flags {
   char flag;
@@ -28,5 +31,8 @@ void process_percent(char **str, const char *format, \
     va_list arglist, t_sprintf* sprintf_args, int* count, int* i);
 bool is_in_str(const char c, const char* str);
 void parse_flags(const char *format, t_sprintf* sprintf_args, int* i);
-
+void parse_precision(const char *format, va_list arglist, t_sprintf* sprintf_args, int* i);
+void parse_length(const char *format, va_list arglist, char* val, int* i);
+void parse_width(const char *format, va_list arglist, t_sprintf *sprintf_args,
+                 int *i);
 #endif
