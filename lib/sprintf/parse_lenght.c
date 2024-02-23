@@ -1,6 +1,6 @@
 #include "s21_string.h"
 
-void parse_length(const char *format, va_list arglist, t_sprintf* sprintf_args, int* i) {
+void parse_length(const char *format, va_list arglist, char* val, int* i) {
     const char* modifiers = "lLh";
     int buf_size = 1800;
     char *buf = calloc(buf_size, sizeof(char));
@@ -10,12 +10,22 @@ void parse_length(const char *format, va_list arglist, t_sprintf* sprintf_args, 
     }
     int idx = 0;
     while (format[*i]) {
-        if (strchr(modifiers, format[*i])) {
+        if (s21_strchr(modifiers, format[*i])) {
             buf[idx] = format[*i];
             break;
         }
         i++;
         idx++;
+        if (idx >= buf_size) {
+            buf = realloc(buf, buf_size * 2);
+            if (buf == s21_NULL) {
+                //free(buf);
+                return s21_NULL;        
+            }
+            buf_size *= 2;
+        }
+        *val = s21_atoi(buf);
+        free(buf); 
     }
     free(buf);
 }
