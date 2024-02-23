@@ -2,7 +2,7 @@
 
 void parse_length(const char *format, va_list arglist, t_sprintf* sprintf_args, int* i) {
     const char* modifiers = "lLh";
-    int buf_size = 1024;
+    int buf_size = 1800;
     char *buf = calloc(1024 * sizeof(char));
 
     if (buf == NULL) {

@@ -8,7 +8,7 @@ void parse_precision(const char *format, va_list arglist, t_sprintf* sprintf_arg
             sprintf_args->width = va_arg(arglist, int);
             (*i)++;
         int buf_size = 1024;
-        char *buf = calloc(1024 * sizeof(char));
+        char *buf = calloc(buf_size, sizeof(char));
 
         if (buf == NULL) {
             return;
@@ -18,7 +18,7 @@ void parse_precision(const char *format, va_list arglist, t_sprintf* sprintf_arg
             buf[idx] = (int)(*(format + *i) - 48);
             (*i)++;
             idx++;
-            if (index >= buf_size) {
+            if (idx >= buf_size) {
                 buf = realloc(buf, buf_size * 2);
                 if (buf == NULL) {
                     free(buf);
@@ -30,4 +30,5 @@ void parse_precision(const char *format, va_list arglist, t_sprintf* sprintf_arg
             free(buf);
         }
     }   
+}
 }
