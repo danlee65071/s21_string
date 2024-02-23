@@ -25,5 +25,6 @@ char *s21_strtok(char *str, const char *delim);
 void *s21_to_lower(const char *str);
 char *s21_strstr(const char *haystack, const char *needle);
 size_t s21_strcspn(const char *str1, const char *str2);
+char *s21_strerror(int errnum);
 
 #endif
