@@ -8,11 +8,15 @@ START_TEST(empty_test) {
   int def = s21_strncmp(str1, str2, num_byte);
   int expect = strncmp(str1, str2, num_byte);
 
-  if (def > 1) def = 1;
-  if (expect > 1) expect = 1;
+  if (def > 1)
+    def = 1;
+  if (expect > 1)
+    expect = 1;
 
-  if (def < -1) def = -1;
-  if (expect < -1) expect = -1;
+  if (def < -1)
+    def = -1;
+  if (expect < -1)
+    expect = -1;
 
   ck_assert_int_eq(def, expect);
 }
@@ -26,11 +30,15 @@ START_TEST(first_abra) {
   int def = s21_strncmp(str1, str2, num_byte);
   int expect = strncmp(str1, str2, num_byte);
 
-  if (def > 1) def = 1;
-  if (expect > 1) expect = 1;
+  if (def > 1)
+    def = 1;
+  if (expect > 1)
+    expect = 1;
 
-  if (def < -1) def = -1;
-  if (expect < -1) expect = -1;
+  if (def < -1)
+    def = -1;
+  if (expect < -1)
+    expect = -1;
 
   ck_assert_int_eq(def, expect);
 }
@@ -44,11 +52,15 @@ START_TEST(second_abra) {
   int def = s21_strncmp(str1, str2, num_byte);
   int expect = strncmp(str1, str2, num_byte);
 
-  if (def > 1) def = 1;
-  if (expect > 1) expect = 1;
+  if (def > 1)
+    def = 1;
+  if (expect > 1)
+    expect = 1;
 
-  if (def < -1) def = -1;
-  if (expect < -1) expect = -1;
+  if (def < -1)
+    def = -1;
+  if (expect < -1)
+    expect = -1;
 
   ck_assert_int_eq(def, expect);
 }
@@ -62,11 +74,15 @@ START_TEST(abra_twice) {
   int def = s21_strncmp(str1, str2, num_byte);
   int expect = strncmp(str1, str2, num_byte);
 
-  if (def > 1) def = 1;
-  if (expect > 1) expect = 1;
+  if (def > 1)
+    def = 1;
+  if (expect > 1)
+    expect = 1;
 
-  if (def < -1) def = -1;
-  if (expect < -1) expect = -1;
+  if (def < -1)
+    def = -1;
+  if (expect < -1)
+    expect = -1;
 
   ck_assert_int_eq(def, expect);
 }
@@ -80,11 +96,15 @@ START_TEST(one_byte) {
   int def = s21_strncmp(str1, str2, num_byte);
   int expect = strncmp(str1, str2, num_byte);
 
-  if (def > 1) def = 1;
-  if (expect > 1) expect = 1;
+  if (def > 1)
+    def = 1;
+  if (expect > 1)
+    expect = 1;
 
-  if (def < -1) def = -1;
-  if (expect < -1) expect = -1;
+  if (def < -1)
+    def = -1;
+  if (expect < -1)
+    expect = -1;
 
   ck_assert_int_eq(def, expect);
 }
@@ -98,11 +118,15 @@ START_TEST(first_five) {
   int def = s21_strncmp(str1, str2, num_byte);
   int expect = strncmp(str1, str2, num_byte);
 
-  if (def > 1) def = 1;
-  if (expect > 1) expect = 1;
+  if (def > 1)
+    def = 1;
+  if (expect > 1)
+    expect = 1;
 
-  if (def < -1) def = -1;
-  if (expect < -1) expect = -1;
+  if (def < -1)
+    def = -1;
+  if (expect < -1)
+    expect = -1;
 
   ck_assert_int_eq(def, expect);
 }
