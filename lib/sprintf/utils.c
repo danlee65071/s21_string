@@ -71,7 +71,7 @@ void	prepare_to_itoa(int n, long *unsign_n, int *sign)
 	}
 }
 
-char*   s21_itoa(int n)
+char* s21_itoa(int n)
 {
 	long	unsign_n;
 	int		sign;
@@ -108,4 +108,14 @@ bool get_flag_value(t_flags* flags, char flag)
             return flags[i].is;
     }
     return false;
+}
+
+char* s21_ftoa(long double num, int precision)
+{
+	long double integer_part;
+	long double fractional_part;
+
+	fractional_part = modfl(num, &integer_part);
+	integer_part = precision <= 0 ? roundl(num) : integer_part;
+	
 }

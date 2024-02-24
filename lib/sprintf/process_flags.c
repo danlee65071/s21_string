@@ -30,3 +30,5 @@ void fill_str(char** str, char* str_value, int str_value_len, int* count)
     for (int j = 0; j < str_value_len; j++)
         (*str)[(*count)++] = str_value[j];
 }
+
+

@@ -34,8 +34,10 @@ SPRINTF_SRCS = s21_sprintf.c \
 	init_flags.c \
 	process_percent.c \
 	parse.c \
-	process_int.c \
 	process_flags.c \
+	process_int.c \
+	process_char.c \
+	process_float.c \
 	utils.c
 SPRINTF_PATHS = $(addprefix $(SPRINTF_DIR)/, $(SPRINTF_SRCS))
 SRCS += $(SPRINTF_PATHS)

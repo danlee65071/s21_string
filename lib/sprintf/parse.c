@@ -50,5 +50,10 @@ void parse_specifiers(const char *format, va_list arglist, t_sprintf* sprintf_ar
 {
     (void) arglist;
     if (is_in_str(format[*i], SPECIFIERS))
-        sprintf_args->specifier = format[(*i)++];
+    {
+        for (uint8_t j = 0; j < NUM_SPECIFIERS; j++)
+            if (sprintf_args->specifier[j].specifier == format[*i])
+                sprintf_args->specifier[j].is = true;
+        (*i)++;
+    }
 }

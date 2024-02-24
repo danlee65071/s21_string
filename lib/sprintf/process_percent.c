@@ -3,9 +3,17 @@
 
 void print_flag(t_sprintf* sprintf_args)
 {
-    printf("specifier: %c\n", sprintf_args->specifier);
+    // printf("specifier: %c\n", sprintf_args->specifier);
+    printf("Specifiers\n");
+    for (uint8_t i = 0; i < NUM_SPECIFIERS; i++)
+    {
+        printf("\tflag: %c\n", sprintf_args->specifier[i].specifier);
+        printf("\tis: %d\n", sprintf_args->specifier[i].is);
+        printf("\tprocess_spec: %p\n", sprintf_args->specifier[i].process_spec);
+        printf("\n");
+    }
     printf("Flags\n");
-    for (uint8_t i = 0; i < 5; i++)
+    for (uint8_t i = 0; i < NUM_FLAGS; i++)
     {
         printf("\tflag: %c\n", sprintf_args->flags[i].flag);
         printf("\tis: %d\n", sprintf_args->flags[i].is);
@@ -33,7 +41,11 @@ void process_percent(char **str, const char *format, \
     (*i)++;
     for (uint8_t j = 0; sprintf_parse_funcs[j] != NULL; j++)
         sprintf_parse_funcs[j](format, arglist, sprintf_args, i);
-    process_int(str, arglist, sprintf_args, count);
+    print_flag(sprintf_args);
+    for (uint8_t j = 0; j < NUM_SPECIFIERS; j++)
+        if (sprintf_args->specifier[j].is && sprintf_args->specifier[j].process_spec)
+            sprintf_args->specifier[j].process_spec(str, arglist, sprintf_args, count);
+    // process_int(str, arglist, sprintf_args, count);
     // printf("%d\n", *i);
     // print_flag(sprintf_args);
 }
