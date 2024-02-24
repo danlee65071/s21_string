@@ -69,5 +69,9 @@ int extract_num_from_format(const char* format, int* i);
 char* s21_itoa(int n);
 bool get_flag_value(t_flags* flags, char flag);
 char* s21_ftoa(long double num, int precision);
+char* s21_strdup(const char *s1);
+char* s21_strjoin(char const *s1, char const *s2);
+void free_line(char** line);
+char* strjoin_with_free(char** s1, char** s2);
 
 #endif

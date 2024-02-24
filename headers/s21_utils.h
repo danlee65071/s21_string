@@ -6,6 +6,8 @@
 #include <stdlib.h>
 
 #define s21_NULL (void *)0
+#define POS_INF 1.0 / 0.0
+#define NEG_INF -1.0 / 0.0
 typedef long unsigned s21_size_t;
 
 void *s21_memchr(const void *str, int c, s21_size_t n);
