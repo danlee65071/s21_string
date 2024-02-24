@@ -1,7 +1,7 @@
 #include "unit_tests.h"
 
 START_TEST(s21_memcmp_1) {
-  size_t n1 = 3;
+  s21_size_t n1 = 3;
   char b1[1024] = "";
   char b11[1024] = "";
   char str_1_2[1024] = "TEST TEST TEST";
@@ -10,7 +10,7 @@ START_TEST(s21_memcmp_1) {
 END_TEST
 
 START_TEST(s21_memcmp_2) {
-  size_t n2 = 5;
+  s21_size_t n2 = 5;
   char b2[1024] = "";
   char b22[1024] = "";
   char str_2_2[1024] = "THE OF \0 THE...BEST!!";
@@ -19,7 +19,7 @@ START_TEST(s21_memcmp_2) {
 END_TEST
 
 START_TEST(s21_memcmp_3) {
-  size_t n3 = 4;
+  s21_size_t n3 = 4;
   char b3[1024] = "777 ";
   char b33[1024] = "777 ";
   char str_3_2[1024] = "S!!111231";
@@ -28,7 +28,7 @@ START_TEST(s21_memcmp_3) {
 END_TEST
 
 START_TEST(s21_memcmp_4) {
-  size_t n4 = 4;
+  s21_size_t n4 = 4;
   char b4[1024] = "KU KU KU $! ";
   char b44[1024] = "KU KU KU $! ";
   ck_assert_int_eq(memcmp(b4, b4 + 7, n4), s21_memcmp(b44, b44 + 7, n4));

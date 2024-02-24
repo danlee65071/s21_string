@@ -4,7 +4,7 @@ START_TEST(abrakadabra_test) {
   char def[] = "abrakadabra";
   char expect[] = "abrakadabra";
   char repl = 'i';
-  size_t num_byte = 11;
+  s21_size_t num_byte = 11;
 
   s21_memset(def, repl, num_byte);
   memset(expect, repl, num_byte);
@@ -17,7 +17,7 @@ START_TEST(empty_test) {
   char def[] = "";
   char expect[] = "";
   char repl = 'i';
-  size_t num_byte = 0;
+  s21_size_t num_byte = 0;
 
   s21_memset(def, repl, num_byte);
   memset(expect, repl, num_byte);
@@ -30,7 +30,7 @@ START_TEST(zero_test) {
   char def[] = "abrakadabra";
   char expect[] = "abrakadabra";
   char repl = 'i';
-  size_t num_byte = 0;
+  s21_size_t num_byte = 0;
 
   s21_memset(def, repl, num_byte);
   memset(expect, repl, num_byte);
@@ -43,7 +43,7 @@ START_TEST(uppercase_test) {
   char def[] = "abrakadabra";
   char expect[] = "abrakadabra";
   char repl = 'I';
-  size_t num_byte = 5;
+  s21_size_t num_byte = 5;
 
   s21_memset(def, repl, num_byte);
   memset(expect, repl, num_byte);
@@ -56,7 +56,7 @@ START_TEST(num_test) {
   char def[] = "abrakadabra";
   char expect[] = "abrakadabra";
   char repl = '4';
-  size_t num_byte = 11;
+  s21_size_t num_byte = 11;
 
   s21_memset(def, repl, num_byte);
   memset(expect, repl, num_byte);

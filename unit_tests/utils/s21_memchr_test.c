@@ -4,7 +4,7 @@ START_TEST(empty_test)
 {
   char str[10] = "";
   int find_byte = '\0';
-  size_t num_byte = 0;
+  s21_size_t num_byte = 0;
 
   ck_assert_ptr_eq(s21_memchr(str, find_byte, num_byte),
                    memchr(str, find_byte, num_byte));
@@ -15,7 +15,7 @@ START_TEST(zero_test)
 {
   char str[15] = "endofstring";
   int find_byte = '\0';
-  size_t num_byte = 12;
+  s21_size_t num_byte = 12;
 
   ck_assert_ptr_eq(s21_memchr(str, find_byte, num_byte),
                    memchr(str, find_byte, num_byte));
@@ -26,7 +26,7 @@ START_TEST(beginning_test)
 {
   char str[10] = "Start";
   int find_byte = 'S';
-  size_t num_byte = 6;
+  s21_size_t num_byte = 6;
 
   ck_assert_ptr_eq(s21_memchr(str, find_byte, num_byte),
                    memchr(str, find_byte, num_byte));
@@ -37,7 +37,7 @@ START_TEST(middle_test)
 {
   char str[15] = "abrakAdabra";
   int find_byte = 'A';
-  size_t num_byte = 12;
+  s21_size_t num_byte = 12;
 
   ck_assert_ptr_eq(s21_memchr(str, find_byte, num_byte),
                    memchr(str, find_byte, num_byte));
@@ -48,7 +48,7 @@ START_TEST(num_mid_test)
 {
   char str[15] = "abra217abra";
   int find_byte = '1';
-  size_t num_byte = 12;
+  s21_size_t num_byte = 12;
 
   ck_assert_ptr_eq(s21_memchr(str, find_byte, num_byte),
                    memchr(str, find_byte, num_byte));
@@ -59,7 +59,7 @@ START_TEST(num_arr_test)
 {
   char str[] = {1, 3, 5, 8, 99, 7};
   int find_byte = 99;
-  size_t num_byte = sizeof(int) * 6;
+  s21_size_t num_byte = sizeof(int) * 6;
 
   ck_assert_ptr_eq(s21_memchr(str, find_byte, num_byte),
                    memchr(str, find_byte, num_byte));

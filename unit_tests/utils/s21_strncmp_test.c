@@ -3,7 +3,7 @@
 START_TEST(empty_test) {
   char str1[] = "";
   char str2[] = "";
-  size_t num_byte = 0;
+  s21_size_t num_byte = 0;
 
   int def = s21_strncmp(str1, str2, num_byte);
   int expect = strncmp(str1, str2, num_byte);
@@ -21,7 +21,7 @@ END_TEST
 START_TEST(first_abra) {
   char str1[] = "abra";
   char str2[] = "";
-  size_t num_byte = 0;
+  s21_size_t num_byte = 0;
 
   int def = s21_strncmp(str1, str2, num_byte);
   int expect = strncmp(str1, str2, num_byte);
@@ -39,7 +39,7 @@ END_TEST
 START_TEST(second_abra) {
   char str1[] = "";
   char str2[] = "abra";
-  size_t num_byte = 0;
+  s21_size_t num_byte = 0;
 
   int def = s21_strncmp(str1, str2, num_byte);
   int expect = strncmp(str1, str2, num_byte);
@@ -57,7 +57,7 @@ END_TEST
 START_TEST(abra_twice) {
   char str1[] = "abra";
   char str2[] = "abra";
-  size_t num_byte = 4;
+  s21_size_t num_byte = 4;
 
   int def = s21_strncmp(str1, str2, num_byte);
   int expect = strncmp(str1, str2, num_byte);
@@ -75,7 +75,7 @@ END_TEST
 START_TEST(one_byte) {
   char str1[] = "abra";
   char str2[] = "abra";
-  size_t num_byte = 1;
+  s21_size_t num_byte = 1;
 
   int def = s21_strncmp(str1, str2, num_byte);
   int expect = strncmp(str1, str2, num_byte);
@@ -93,7 +93,7 @@ END_TEST
 START_TEST(first_five) {
   char str1[] = "abrakadabra";
   char str2[] = "abra";
-  size_t num_byte = 5;
+  s21_size_t num_byte = 5;
 
   int def = s21_strncmp(str1, str2, num_byte);
   int expect = strncmp(str1, str2, num_byte);

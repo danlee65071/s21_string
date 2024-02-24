@@ -7,7 +7,7 @@
 
 static inline int checkTrimChars(char srcEl, const char* trimChars) {
     int checkRes = 0;
-    for (size_t i = 0; i < s21_strlen(trimChars); i++) {
+    for (s21_size_t i = 0; i < s21_strlen(trimChars); i++) {
         if (*(trimChars + i) == srcEl) {
             checkRes = 1;
         }

@@ -12,7 +12,7 @@ void init_flags(t_sprintf* sprintf_args)
         t_sprintf* sprintf_args, int* count) = {
             process_char,
             process_int,
-            NULL,
+            process_float,
             NULL,
             NULL,
             NULL,

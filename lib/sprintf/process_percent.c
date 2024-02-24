@@ -41,7 +41,7 @@ void process_percent(char **str, const char *format, \
     (*i)++;
     for (uint8_t j = 0; sprintf_parse_funcs[j] != NULL; j++)
         sprintf_parse_funcs[j](format, arglist, sprintf_args, i);
-    print_flag(sprintf_args);
+    // print_flag(sprintf_args);
     for (uint8_t j = 0; j < NUM_SPECIFIERS; j++)
         if (sprintf_args->specifier[j].is && sprintf_args->specifier[j].process_spec)
             sprintf_args->specifier[j].process_spec(str, arglist, sprintf_args, count);

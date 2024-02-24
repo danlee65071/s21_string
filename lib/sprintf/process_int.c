@@ -15,7 +15,7 @@ void process_int(char **str, va_list arglist, \
         value = va_arg(arglist, int);
     int sign = value < 0 ? -1 : 1;
     char* str_value = s21_itoa(value * sign);
-    size_t str_value_len = s21_strlen(str_value);
+    s21_size_t str_value_len = s21_strlen(str_value);
     sprintf_args->width -= str_value_len;
     sprintf_args->precision -= str_value_len;
     if (get_flag_value(sprintf_args->flags, '-'))
