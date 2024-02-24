@@ -60,6 +60,8 @@ void process_char(char **str, va_list arglist, \
     t_sprintf* sprintf_args, int* count);
 void process_float(char **str, va_list arglist, \
     t_sprintf* sprintf_args, int* count);
+void process_string(char **str, va_list arglist, \
+    t_sprintf* sprintf_args, int* count);
 
 bool is_in_str(const char c, const char* str);
 bool is_digit(const char c);

@@ -13,7 +13,7 @@ void init_flags(t_sprintf* sprintf_args)
             process_char,
             process_int,
             process_float,
-            NULL,
+            process_string,
             NULL,
             NULL,
             NULL,
