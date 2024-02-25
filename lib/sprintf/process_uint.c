@@ -10,25 +10,6 @@ int get_radix(t_specifiers* specifiers)
     return radix;
 }
 
-void fill_prefix(char** str, t_sprintf* sprintf_args, int radix, int* count)
-{
-    if (get_flag_value(sprintf_args->flags, '#') && (radix == 8 || radix == 16))
-    {
-        fill_str(str, "0", 1, count);
-        sprintf_args->width--;
-        if (get_spec_value(sprintf_args->specifier, 'x'))
-        {
-            fill_str(str, "x", 1, count);
-            sprintf_args->width--;
-        }
-        else if (get_spec_value(sprintf_args->specifier, 'X'))
-        {
-            fill_str(str, "X", 1, count);
-            sprintf_args->width--;
-        }
-    }
-}
-
 void process_uint(char **str, va_list arglist, \
     t_sprintf* sprintf_args, int* count)
 {

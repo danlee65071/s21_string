@@ -29,7 +29,6 @@ void init_flags(t_sprintf* sprintf_args)
     for (uint8_t i = 0; i < NUM_SPECIFIERS; i++)
     {
         sprintf_args->specifier[i].specifier = SPECIFIERS[i];
-        // printf("%c\n", sprintf_args->specifier[i].specifier);
         sprintf_args->specifier[i].process_spec = process_specs[i];
         sprintf_args->specifier[i].is = false;
     }

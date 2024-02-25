@@ -54,6 +54,7 @@ void parse_specifiers(const char *format, va_list arglist, t_sprintf* sprintf_ar
 void fill_sign(char** str, int sign, t_sprintf* sprintf_args, int* count);
 void fill_space(char** str, int num, char c, int* count);
 void fill_str(char** str, char* str_value, int str_value_len, int* count);
+void fill_prefix(char** str, t_sprintf* sprintf_args, int radix, int* count);
 
 void process_int(char **str, va_list arglist, \
   t_sprintf* sprintf_args, int* count);
