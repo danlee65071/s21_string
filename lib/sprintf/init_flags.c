@@ -22,7 +22,7 @@ void init_flags(t_sprintf* sprintf_args)
             process_uint, // x
             process_uint, // X
             process_uint, // o
-            NULL, // p
+            process_uint, // p
             NULL,
     };
     for (uint8_t i = 0; i < NUM_SPECIFIERS; i++)

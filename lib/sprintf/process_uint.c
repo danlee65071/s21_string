@@ -5,7 +5,8 @@ int get_radix(t_specifiers* specifiers)
     int radix = 10;
     if (get_spec_value(specifiers, 'o'))
         radix = 8;
-    else if (get_spec_value(specifiers, 'x') || get_spec_value(specifiers, 'X'))
+    else if (get_spec_value(specifiers, 'x') || get_spec_value(specifiers, 'X')\
+        || get_spec_value(specifiers, 'p'))
         radix = 16;
     return radix;
 }
@@ -23,6 +24,14 @@ void process_uint(char **str, va_list arglist, \
     else
         value = va_arg(arglist, int);
     int radix = get_radix(sprintf_args->specifier);
+    if (get_spec_value(sprintf_args->specifier, 'p'))
+    {
+        for (uint8_t i = 0; i < NUM_FLAGS; i++)
+        {
+            if (sprintf_args->flags[i].flag == '#')
+                sprintf_args->flags[i].is = true;
+        }
+    }
     char* str_value = s21_itoa(value, radix);
     if (get_spec_value(sprintf_args->specifier, 'X'))
         str_value = s21_to_upper(str_value);

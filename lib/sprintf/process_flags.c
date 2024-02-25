@@ -37,7 +37,7 @@ void fill_prefix(char** str, t_sprintf* sprintf_args, int radix, int* count)
     {
         fill_str(str, "0", 1, count);
         sprintf_args->width--;
-        if (get_spec_value(sprintf_args->specifier, 'x'))
+        if (get_spec_value(sprintf_args->specifier, 'x') || get_spec_value(sprintf_args->specifier, 'p'))
         {
             fill_str(str, "x", 1, count);
             sprintf_args->width--;
