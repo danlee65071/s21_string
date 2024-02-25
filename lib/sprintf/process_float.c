@@ -23,11 +23,11 @@ void process_float(char **str, va_list arglist, \
         else if (get_spec_value(sprintf_args->specifier, 'e'))
             str_value = s21_etoa(value * sign, sprintf_args->precision, 'e');
         else if (get_spec_value(sprintf_args->specifier, 'E'))
-            str_value = s21_to_upper(os21_etoa(value * sign, sprintf_args->precision, 'E'));
+            str_value = s21_to_upper(s21_etoa(value * sign, sprintf_args->precision, 'E'));
         else if (get_spec_value(sprintf_args->specifier, 'g'))
             str_value = s21_gtoa(value * sign, sprintf_args->precision, 'g');
         else if (get_spec_value(sprintf_args->specifier, 'G'))
-            str_value = s21_to_upper(os21_etoa(value * sign, sprintf_args->precision, 'G'));
+            str_value = s21_to_upper(s21_gtoa(value * sign, sprintf_args->precision, 'G'));
     }
     s21_size_t str_value_len = s21_strlen(str_value);
     sprintf_args->width -= str_value_len;
