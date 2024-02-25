@@ -66,6 +66,8 @@ void process_string(char **str, va_list arglist, \
     t_sprintf* sprintf_args, int* count);
 void process_uint(char **str, va_list arglist, \
     t_sprintf* sprintf_args, int* count);
+void process_exp(char **str, va_list arglist, \
+    t_sprintf* sprintf_args, int* count);
 
 bool is_in_str(const char c, const char* str);
 bool is_digit(const char c);
@@ -75,6 +77,8 @@ int extract_num_from_format(const char* format, int* i);
 char* s21_itoa(long long value, int radix);
 bool get_flag_value(t_flags* flags, char flag);
 char* s21_ftoa(long double num, int precision);
+char* s21_etoa(long double num, int precision, char char_e);
+char* s21_gtoa(long double num, int precision, char char_e);
 char* s21_strdup(const char *s1);
 char* s21_strjoin(char const *s1, char const *s2);
 void free_line(char** line);

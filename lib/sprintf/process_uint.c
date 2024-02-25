@@ -24,6 +24,8 @@ void process_uint(char **str, va_list arglist, \
         value = va_arg(arglist, int);
     int radix = get_radix(sprintf_args->specifier);
     char* str_value = s21_itoa(value, radix);
+    if (get_spec_value(sprintf_args->specifier, 'X'))
+        str_value = s21_to_upper(str_value);
     s21_size_t str_value_len = s21_strlen(str_value);
     sprintf_args->width -= str_value_len;
     int orig_precision = sprintf_args->precision;
@@ -53,8 +55,7 @@ void process_uint(char **str, va_list arglist, \
         }
         else
         {
-            sprintf_args->width -= sprintf_args->precision > (int)str_value_len ? \
-                sprintf_args->precision - (int)str_value_len : 0;
+            sprintf_args->width -= sprintf_args->precision;
             fill_space(str, sprintf_args->width, ' ', count);
             fill_prefix(str, sprintf_args, radix, count);
             fill_space(str, sprintf_args->precision, '0', count);

@@ -171,7 +171,7 @@ char* s21_itoa(long long value, int radix)
 		for (; value; value /= radix)
 		{
 			char* str_digit = char_to_str(DIGITS[value % radix]);
-			result = !result ? str_digit : strjoin_with_free(&result, &str_digit);
+			result = !result ? str_digit : strjoin_with_free(&str_digit, &result);
 		}
 	}
 	return result;
@@ -192,8 +192,95 @@ char* s21_ftoa(long double num, int precision)
 		fractional_part = roundl(fractional_part * powl(10, precision));
 		char* dot_str = s21_strdup(".");
 		char* frac_str = s21_itoa((int)fractional_part, 10);
+		int frac_str_len = (int)s21_strlen(frac_str);
+		for (int i = 0; i + frac_str_len < precision; i++)
+		{
+			char* zero_str = char_to_str('0');
+			frac_str = strjoin_with_free(&zero_str, &frac_str);
+		}
 		result = strjoin_with_free(&result, &dot_str);
 		result = strjoin_with_free(&result, &frac_str);
+	}
+	return result;
+}
+
+char* s21_etoa(long double num, int precision, char char_e)
+{
+	long double expo = floorl(log10l(num));
+	long double mant = num / powl(10, (int)expo);
+	expo = (expo == POS_INF || expo == NEG_INF) ? 0 : expo;
+  	mant = isnan(mant) ? 0 : mant;
+	char* result = s21_ftoa(mant, precision);
+	char* e_str = char_to_str(char_e);
+	result = strjoin_with_free(&result, &e_str);
+	int exp_sign = expo < 0 ? -1 : 1;
+	char exp_sign_char = expo < 0 ? '-' : '+';
+	char* exp_sign_str = char_to_str(exp_sign_char);
+	result = strjoin_with_free(&result, &exp_sign_str);
+	char* exp_str = s21_itoa((long long)expo * exp_sign, 10);
+	if (s21_strlen(exp_str) == 1)
+	{
+		char* zero_str = char_to_str('0');
+		exp_str = strjoin_with_free(&zero_str, &exp_str);
+	}
+	result = strjoin_with_free(&result, &exp_str);
+	return result;
+}
+
+char* reverse_str(char* str)
+{
+	s21_size_t len_str = s21_strlen(str);
+	char* result = calloc(len_str, sizeof(char));
+	for (s21_size_t i = len_str; i > 0; i--)
+		result[len_str - i] = str[i];
+	return result;
+}
+
+
+char* s21_gtoa(long double num, int precision, char char_e)
+{
+	char* result = s21_NULL;
+	char* tmp = s21_NULL;
+	int len_result = 0;
+	int i, j;
+
+	long double expo = floorl(log10l(num));
+	expo = (expo == POS_INF || expo == NEG_INF) ? 0 : expo;
+	if (precision < expo || expo < -4)
+	{
+		precision = precision - 1 < 0 ? 0 : precision - 1;
+		result = s21_etoa(num, precision, char_e);
+		len_result = s21_strlen(result);
+		tmp = calloc(len_result, sizeof(char));
+		i = len_result;
+		j = 0;
+		for (; i > 0; i--, j++)
+		{
+			tmp[j] =  result[i];
+			if (result[i] == 'e' || result[i] == 'E')
+				break;
+		}
+		for (; result[i] == '0'; i--);
+		for (; i > 0; i--, j++)
+		{
+			tmp[j] =  result[i];
+			if (result[i] == 'e' || result[i] == 'E')
+				break;
+		}
+		free_line(&result);
+		result = reverse_str(tmp);
+		free_line(&tmp);
+	}
+	else
+	{
+		long double expo = floorl(log10l(num));
+		precision = precision - expo - 1 < 1 ? 1 : precision - expo - 1;
+		result = s21_ftoa(num, precision);
+		len_result = s21_strlen(result) - 1;
+		for (; result[len_result] == '0'; len_result--)
+			result[len_result] = 0;
+		if (result[len_result] == '.')
+			result[len_result] = 0;
 	}
 	return result;
 }

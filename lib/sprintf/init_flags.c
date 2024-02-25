@@ -15,15 +15,14 @@ void init_flags(t_sprintf* sprintf_args)
             process_float,
             process_string,
             process_uint,
-            NULL,
-            NULL,
-            NULL,
-            NULL,
-            NULL,
-            NULL,
-            NULL,
-            NULL,
-            NULL,
+            process_float, // g
+            process_float, // G
+            process_float, // e
+            process_float, // E
+            process_uint, // x
+            process_uint, // X
+            process_uint, // o
+            NULL, // p
             NULL,
     };
     for (uint8_t i = 0; i < NUM_SPECIFIERS; i++)

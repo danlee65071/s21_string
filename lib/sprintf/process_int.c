@@ -48,8 +48,7 @@ void process_int(char **str, va_list arglist, \
         {
             if (sign < 0 || get_flag_value(sprintf_args->flags, '+'))
                 sprintf_args->width--;
-            sprintf_args->width -= sprintf_args->precision > (int)str_value_len ? \
-                sprintf_args->precision - (int)str_value_len : 0;
+            sprintf_args->width -= sprintf_args->precision;
             fill_space(str, sprintf_args->width, ' ', count);
             fill_sign(str, sign, sprintf_args, count);
             fill_space(str, sprintf_args->precision, '0', count);
