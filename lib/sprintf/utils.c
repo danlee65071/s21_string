@@ -40,66 +40,6 @@ int extract_num_from_format(const char* format, int* i)
      return num;
 }
 
-int	length_num(long unsign_n, int sign)
-{
-	int	len;
-
-	len = 0;
-	if (unsign_n == 0)
-		return (1);
-	while (unsign_n != 0)
-	{
-		unsign_n /= 10;
-		len++;
-	}
-	if (sign == -1)
-		len++;
-	return (len);
-}
-
-void	prepare_to_itoa(int n, long *unsign_n, int *sign)
-{
-	if (n < 0)
-	{
-		*unsign_n = (-1) * (long)n;
-		*sign = -1;
-	}
-	else
-	{
-		*unsign_n = n;
-		*sign = 1;
-	}
-}
-
-char* s21_itoa(int n)
-{
-	long	unsign_n;
-	int		sign;
-	int		len_n;
-	char	*s;
-
-	unsign_n = 0;
-	sign = 0;
-	prepare_to_itoa(n, &unsign_n, &sign);
-	len_n = length_num(unsign_n, sign);
-	s = malloc(sizeof(char) * (len_n + 1));
-	if (!s)
-		return (NULL);
-	s[len_n] = '\0';
-	len_n--;
-	while (unsign_n != 0)
-	{
-		s[len_n] = unsign_n % 10 + '0';
-		len_n--;
-		unsign_n /= 10;
-	}
-	if (sign == -1)
-		s[0] = '-';
-	if (n == 0)
-		s[0] = '0';
-	return (s);
-}
-
 s21_size_t	s21_strlcpy(char *restrict dst, const char *restrict src, s21_size_t dstsize)
 {
 	s21_size_t	i;
@@ -186,6 +126,16 @@ bool get_flag_value(t_flags* flags, char flag)
     return false;
 }
 
+bool get_spec_value(t_specifiers* specifiers, char specifier)
+{
+    for (uint8_t i = 0; i < NUM_SPECIFIERS; i++)
+    {
+        if (specifiers[i].specifier == specifier)
+            return specifiers[i].is;
+    }
+    return false;
+}
+
 void free_line(char** line)
 {
     if (line && *line)
@@ -203,6 +153,30 @@ char* strjoin_with_free(char** s1, char** s2)
 	return result;
 }
 
+char* char_to_str(char c)
+{
+	char* res = extended_realloc(s21_NULL, 2);
+	res[0] = c;
+	res[1] = '\0';
+	return res;
+}
+
+char* s21_itoa(long long value, int radix)
+{
+	char* result = s21_NULL;
+	if (value == 0)
+		result = s21_strdup("0");
+	else
+	{
+		for (; value; value /= radix)
+		{
+			char* str_digit = char_to_str(DIGITS[value % radix]);
+			result = !result ? str_digit : strjoin_with_free(&result, &str_digit);
+		}
+	}
+	return result;
+}
+
 char* s21_ftoa(long double num, int precision)
 {
 	long double integer_part;
@@ -212,12 +186,12 @@ char* s21_ftoa(long double num, int precision)
 	
 	fractional_part = modfl(num, &integer_part) * sign;
 	integer_part = precision <= 0 ? roundl(num) : integer_part;
-	result = s21_itoa((int)integer_part);
+	result = s21_itoa((long long)integer_part, 10);
 	if (precision)
 	{
 		fractional_part = roundl(fractional_part * powl(10, precision));
 		char* dot_str = s21_strdup(".");
-		char* frac_str = s21_itoa((int)fractional_part);
+		char* frac_str = s21_itoa((int)fractional_part, 10);
 		result = strjoin_with_free(&result, &dot_str);
 		result = strjoin_with_free(&result, &frac_str);
 	}

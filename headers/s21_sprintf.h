@@ -6,6 +6,7 @@
 #define LENGTH "hlL"
 #define NUM_FLAGS 5
 #define FLAGS "-+ #0"
+#define DIGITS "0123456789abcdef"
 #define BUF_SIZE 32
 
 #include <stdarg.h>
@@ -62,18 +63,21 @@ void process_float(char **str, va_list arglist, \
     t_sprintf* sprintf_args, int* count);
 void process_string(char **str, va_list arglist, \
     t_sprintf* sprintf_args, int* count);
+void process_uint(char **str, va_list arglist, \
+    t_sprintf* sprintf_args, int* count);
 
 bool is_in_str(const char c, const char* str);
 bool is_digit(const char c);
 void* extended_realloc(void* ptr, s21_size_t size);
 void fatal(int errnum);
 int extract_num_from_format(const char* format, int* i);
-char* s21_itoa(int n);
+char* s21_itoa(long long value, int radix);
 bool get_flag_value(t_flags* flags, char flag);
 char* s21_ftoa(long double num, int precision);
 char* s21_strdup(const char *s1);
 char* s21_strjoin(char const *s1, char const *s2);
 void free_line(char** line);
 char* strjoin_with_free(char** s1, char** s2);
+bool get_spec_value(t_specifiers* specifiers, char specifier);
 
 #endif
