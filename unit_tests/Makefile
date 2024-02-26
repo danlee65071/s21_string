@@ -5,7 +5,7 @@ LIB_DIR = ..
 LIB_PATH = $(addprefix $(LIB_DIR)/, $(LIB_NAME))
 LIB_HEADER_DIR = $(addprefix $(LIB_DIR)/, headers)
 
-CC = gcc
+CC = clang
 CFLAGS = -Wall -Werror -Wextra -g -std=c11
 
 SRC_TESTS = unit_tests.c
@@ -57,7 +57,7 @@ $(NAME_TEST): $(OBJS_TEST_PATH)
 
 $(OBJS_TEST_DIR)/%.o: ./%.c $(HEADER_TEST) Makefile
 	mkdir -p $(OBJS_TEST_DIR) $(CREATES_DIR)
-	$(CC) $(CFLAGS) $(LIBS) -I $(LIB_HEADER_DIR) -I. -c $< -o $@
+	$(CC) $(CFLAGS) $(LIBS) -I $(LIB_HEADER_DIR) -I. -Qunused-arguments -c $< -o $@
 
 clean:
 	rm -rf $(OBJS_TEST_DIR) $(NAME_TEST)
