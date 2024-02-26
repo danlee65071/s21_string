@@ -26,6 +26,7 @@ void parse_width(const char* format, va_list arglist, t_sprintf* sprintf_args, i
 void parse_precision(const char* format, va_list arglist, \
     t_sprintf* sprintf_args, int* i)
 {
+    sprintf_args->precision = -1;
     if (format[*i] == '.')
     {
         (*i)++;

@@ -1,4 +1,4 @@
-#include "../s21_test.h"
+#include "unit_tests.h"
 
 START_TEST(sprintf_minus) {
   char str1[BUFF_SIZE] = "";
@@ -35,15 +35,13 @@ START_TEST(sprintf_p) {
 }
 END_TEST
 
-Suite *s21_sprintf_other_test_suite(void) {
+Suite *s21_sprintf_other_test(void) {
   Suite *s;
   TCase *tc;
 
-  s = suite_create(
-      "\033[1;32m========================= \033[0mТЕСТИРОВАНИЕ sprintf_p "
-      "НАЧАЛО\033[1;32m =====================\033[0m\n\n");
+  s = suite_create("s21_sprintf_other");
 
-  tc = tcase_create("tcase");
+  tc = tcase_create("case_s21_sprintf_other");
 
   tcase_add_test(tc, sprintf_minus);
   tcase_add_test(tc, sprintf_plus);

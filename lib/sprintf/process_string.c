@@ -4,9 +4,12 @@ void process_string(char **str, va_list arglist, \
     t_sprintf* sprintf_args, int* count)
 {
     char* value = va_arg(arglist, char*);
-    sprintf_args->precision = sprintf_args->precision <= 0 ? POS_INF : sprintf_args->precision;
+    sprintf_args->precision = sprintf_args->precision < 0 ? 2147483647 : sprintf_args->precision;
     int str_value_len = (int)s21_strlen(value) < sprintf_args->precision ? \
         (int)s21_strlen(value) : sprintf_args->precision;
+    // printf("str_value_len: %d\n", str_value_len);
+    // printf("(int)s21_strlen(value): %d\n", (int)s21_strlen(value));
+    // printf("precision: %d\n", sprintf_args->precision);
     sprintf_args->width -= str_value_len;
     if (get_flag_value(sprintf_args->flags, '-'))
     {

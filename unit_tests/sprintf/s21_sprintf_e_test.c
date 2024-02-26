@@ -1,4 +1,4 @@
-#include "../s21_test.h"
+#include "unit_tests.h"
 
 // START_TEST(sprintf_spec_e_gen_test_1) {  // TODO: split to 3 cases
 //   char *format = s21_gen_fe_cases(_i, "e");
@@ -631,16 +631,14 @@ END_TEST
 // }
 // END_TEST
 
-Suite *s21_sprintf_e_suite(void) {
+Suite *s21_sprintf_e_test(void) {
   Suite *s;
   TCase *tc;
   // int n = 5 * 4 * 2 * 2 * 2 * 2 * 2;
 
-  s = suite_create(
-      "\033[1;32m========================= \033[0mТЕСТИРОВАНИЕ sprintf_e "
-      "НАЧАЛО\033[1;32m =====================\033[0m\n\n");
+  s = suite_create("s21_sprintf_e");
 
-  tc = tcase_create("tcase");
+  tc = tcase_create("case_s21_sprintf_e");
 
   // tcase_add_loop_test(tc, sprintf_spec_e_gen_test_1, 0, n);
   tcase_add_test(tc, sprintf_spec_e_def_test_1);

@@ -3,7 +3,15 @@
 
 #include <check.h>
 #include <stdlib.h>
+#include <math.h>
+#include <stdbool.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <wchar.h>
 #include "s21_string.h"
+
+#define BUFF_SIZE 1024
 
 // utils
 Suite *s21_memcmp_test(void);
@@ -24,5 +32,16 @@ Suite *s21_to_lower_test(void);
 Suite *s21_strstr_test(void);
 Suite *s21_strcspn_test(void);
 Suite *s21_strtok_test(void);
+// sprintf
+Suite *s21_sprintf_c_test(void);
+Suite *s21_sprintf_d_test(void);
+Suite *s21_sprintf_f_test(void);
+Suite *s21_sprintf_i_test(void);
+Suite *s21_sprintf_e_test(void);
+Suite *s21_sprintf_g_test(void);
+Suite *s21_sprintf_n_test(void);
+Suite *s21_sprintf_ouxX_test(void);
+Suite *s21_sprintf_s_test(void);
+Suite *s21_sprintf_other_test(void);
 
 #endif

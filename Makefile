@@ -77,6 +77,7 @@ test: $(NAME)
 	make -C $(DIR_TESTS)
 
 clean:
+	make clean -C $(DIR_TESTS)
 	rm -rf $(OBJS_DIR) $(NAME)
 	rm -rf .clang-format
 

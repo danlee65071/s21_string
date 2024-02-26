@@ -25,19 +25,28 @@ int main()
                                         s21_strpbrk_test, \
                                         s21_to_upper_test
                                        };
+    Suite* (*sprintf_tests_funcs[]) () = {s21_sprintf_c_test,
+                            s21_sprintf_d_test,
+                            s21_sprintf_f_test,
+                            s21_sprintf_e_test,
+                            s21_sprintf_other_test,
+                            s21_sprintf_g_test,
+                            s21_sprintf_ouxX_test,
+                            s21_sprintf_s_test
+                                };
     uint8_t utils_tests_count = sizeof(utils_tests_funcs) / sizeof(*utils_tests_funcs);
+    uint8_t sprintf_tests_count = sizeof(sprintf_tests_funcs) / sizeof(*sprintf_tests_funcs);
     uint8_t fail = 0;
-    uint8_t num_test = utils_tests_count;
-    int result[num_test];
+    uint8_t i = 0;
+    uint8_t num_tests = utils_tests_count + sprintf_tests_count;
+    int result[num_tests];
 
-    for (uint8_t i = 0; i < utils_tests_count; i++)
+    for (; i < utils_tests_count; i++)
         case_test(utils_tests_funcs[i](), &(result[i]));
-    for (uint8_t i = 0; i < num_test; i++)
+    for (; i < num_tests; i++)
+        case_test(sprintf_tests_funcs[i-utils_tests_count](), &(result[i]));
+    for (i = 0; i < num_tests; i++)
         if (result[i] != 0)
-        {
-            printf("%d\n", result[i]);
-            printf("%d\n", i);
             fail = 1;
-        }
     return fail;
 }

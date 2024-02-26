@@ -2,7 +2,6 @@
 
 void init_flags(t_sprintf* sprintf_args)
 {
-    sprintf_args->precision = -1;
     for (uint8_t i = 0; i < NUM_FLAGS; i++)
     {
         sprintf_args->flags[i].flag = FLAGS[i];
@@ -23,6 +22,7 @@ void init_flags(t_sprintf* sprintf_args)
             process_uint,
             process_uint,
             process_uint,
+            process_char,
             NULL,
     };
     for (uint8_t i = 0; i < NUM_SPECIFIERS; i++)

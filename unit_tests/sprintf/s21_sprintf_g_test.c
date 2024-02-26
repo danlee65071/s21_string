@@ -1,4 +1,4 @@
-#include "../s21_test.h"
+#include "unit_tests.h"
 
 // START_TEST(sprintf_1_g) {
 //   char s21_str[BUFF_SIZE] = {0};
@@ -15,7 +15,7 @@
 START_TEST(sprintf_2_g) {
   char s21_str[BUFF_SIZE] = {0};
   char str[BUFF_SIZE] = {0};
-  char *format = "\n%g\n%.g\n%4g\n%4.g\n%5.10g!";
+  char *format = "\n%g\n%.0g\n%4g\n%4.g\n%5.10g!";
   double a = -764231539.;
   int s21_res = s21_sprintf(s21_str, format, a, a, a, a, a);
   int res = sprintf(str, format, a, a, a, a, a);
@@ -549,15 +549,13 @@ END_TEST
 // }
 // END_TEST
 
-Suite *s21_sprintf_g_suite(void) {
+Suite *s21_sprintf_g_test(void) {
   Suite *s;
   TCase *tc;
 
-  s = suite_create(
-      "\033[1;32m========================= \033[0mТЕСТИРОВАНИЕ sprintf_g "
-      "НАЧАЛО\033[1;32m =====================\033[0m\n\n");
+  s = suite_create("s21_sprintf_g");
 
-  tc = tcase_create("tcase");
+  tc = tcase_create("case_s21_sprintf_g");
 
   // tcase_add_test(tc, sprintf_1_g);
   tcase_add_test(tc, sprintf_2_g);

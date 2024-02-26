@@ -19,7 +19,7 @@ void process_uint(char **str, va_list arglist, \
         value = (short)va_arg(arglist, unsigned int);
     else if (sprintf_args->length == 'l')
         value = va_arg(arglist, unsigned long);
-    else if (sprintf_args->length == 'L')
+    else if (sprintf_args->length == 'L' || get_spec_value(sprintf_args->specifier, 'p'))
         value = va_arg(arglist, unsigned long long);
     else
         value = va_arg(arglist, int);

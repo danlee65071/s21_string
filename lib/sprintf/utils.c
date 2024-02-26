@@ -177,7 +177,7 @@ char* s21_itoa(long long value, int radix)
 	return result;
 }
 
-char* s21_ftoa(long double num, int precision)
+char* s21_ftoa(long double num, int precision, bool hash_flag)
 {
 	long double integer_part;
 	long double fractional_part;
@@ -185,11 +185,11 @@ char* s21_ftoa(long double num, int precision)
 	char* result = s21_NULL;
 	
 	fractional_part = modfl(num, &integer_part) * sign;
-	integer_part = precision <= 0 ? roundl(num) : integer_part;
+	integer_part += roundl(fractional_part * powl(10, precision)) / powl(10, precision);
 	result = s21_itoa((long long)integer_part, 10);
-	if (precision)
+	if (precision > 0 || hash_flag)
 	{
-		fractional_part = roundl(fractional_part * powl(10, precision));
+		fractional_part = precision > 0 ? roundl(fractional_part * powl(10, precision)) : 0;
 		char* dot_str = s21_strdup(".");
 		char* frac_str = s21_itoa((int)fractional_part, 10);
 		int frac_str_len = (int)s21_strlen(frac_str);
@@ -204,13 +204,15 @@ char* s21_ftoa(long double num, int precision)
 	return result;
 }
 
-char* s21_etoa(long double num, int precision, char char_e)
+char* s21_etoa(long double num, int precision, char char_e, bool hash_flag)
 {
 	long double expo = floorl(log10l(num));
 	long double mant = num / powl(10, (int)expo);
 	expo = (expo == POS_INF || expo == NEG_INF) ? 0 : expo;
   	mant = isnan(mant) ? 0 : mant;
-	char* result = s21_ftoa(mant, precision);
+	// printf("precision: %d\n", precision);
+	char* result = s21_ftoa(mant, precision, hash_flag);
+	// printf("result: %s\n", result);
 	char* e_str = char_to_str(char_e);
 	result = strjoin_with_free(&result, &e_str);
 	int exp_sign = expo < 0 ? -1 : 1;
@@ -231,13 +233,13 @@ char* reverse_str(char* str)
 {
 	s21_size_t len_str = s21_strlen(str);
 	char* result = calloc(len_str, sizeof(char));
-	for (s21_size_t i = len_str; i > 0; i--)
-		result[len_str - i] = str[i];
+	for (int i = len_str-1; i >= 0; i--)		
+		result[len_str - i - 1] = str[i];
 	return result;
 }
 
 
-char* s21_gtoa(long double num, int precision, char char_e)
+char* s21_gtoa(long double num, int precision, char char_e, bool hash_flag)
 {
 	char* result = s21_NULL;
 	char* tmp = s21_NULL;
@@ -249,24 +251,29 @@ char* s21_gtoa(long double num, int precision, char char_e)
 	if (precision < expo || expo < -4)
 	{
 		precision = precision - 1 < 0 ? 0 : precision - 1;
-		result = s21_etoa(num, precision, char_e);
+		result = s21_etoa(num, precision, char_e, hash_flag);
 		len_result = s21_strlen(result);
 		tmp = calloc(len_result, sizeof(char));
 		i = len_result;
 		j = 0;
-		for (; i > 0; i--, j++)
+		while (i >= 0)
 		{
-			tmp[j] =  result[i];
+			if (result[i] == '\0')
+			{
+				i--;
+				continue;
+			}
+			tmp[j++] = result[i--];
 			if (result[i] == 'e' || result[i] == 'E')
+			{
+				tmp[j++] = result[i--];
 				break;
+			}
 		}
 		for (; result[i] == '0'; i--);
-		for (; i > 0; i--, j++)
-		{
-			tmp[j] =  result[i];
-			if (result[i] == 'e' || result[i] == 'E')
-				break;
-		}
+
+		for (; i >= 0; i--, j++)
+			tmp[j] = result[i];
 		free_line(&result);
 		result = reverse_str(tmp);
 		free_line(&tmp);
@@ -275,7 +282,7 @@ char* s21_gtoa(long double num, int precision, char char_e)
 	{
 		long double expo = floorl(log10l(num));
 		precision = precision - expo - 1 < 1 ? 1 : precision - expo - 1;
-		result = s21_ftoa(num, precision);
+		result = s21_ftoa(num, precision, hash_flag);
 		len_result = s21_strlen(result) - 1;
 		for (; result[len_result] == '0'; len_result--)
 			result[len_result] = 0;

@@ -11,7 +11,6 @@ void process_float(char **str, va_list arglist, \
     int sign = value < 0 ? -1 : 1;
     char* str_value = s21_NULL;
     sprintf_args->precision = sprintf_args->precision < 0 ? 6 : sprintf_args->precision;
-    sprintf_args->precision = sprintf_args->precision == 0 ? 1 : sprintf_args->precision;
     if (isnan(value))
         str_value = s21_strdup("nan");
     else if (value == POS_INF || value == NEG_INF)
@@ -19,15 +18,15 @@ void process_float(char **str, va_list arglist, \
     else
     {
         if (get_spec_value(sprintf_args->specifier, 'f'))
-            str_value = s21_ftoa(value * sign, sprintf_args->precision);
+            str_value = s21_ftoa(value * sign, sprintf_args->precision, get_flag_value(sprintf_args->flags, '#'));
         else if (get_spec_value(sprintf_args->specifier, 'e'))
-            str_value = s21_etoa(value * sign, sprintf_args->precision, 'e');
+            str_value = s21_etoa(value * sign, sprintf_args->precision, 'e', get_flag_value(sprintf_args->flags, '#'));
         else if (get_spec_value(sprintf_args->specifier, 'E'))
-            str_value = s21_to_upper(s21_etoa(value * sign, sprintf_args->precision, 'E'));
+            str_value = s21_to_upper(s21_etoa(value * sign, sprintf_args->precision, 'E', get_flag_value(sprintf_args->flags, '#')));
         else if (get_spec_value(sprintf_args->specifier, 'g'))
-            str_value = s21_gtoa(value * sign, sprintf_args->precision, 'g');
+            str_value = s21_gtoa(value * sign, sprintf_args->precision, 'e', get_flag_value(sprintf_args->flags, '#'));
         else if (get_spec_value(sprintf_args->specifier, 'G'))
-            str_value = s21_to_upper(s21_gtoa(value * sign, sprintf_args->precision, 'G'));
+            str_value = s21_to_upper(s21_gtoa(value * sign, sprintf_args->precision, 'E', get_flag_value(sprintf_args->flags, '#')));
     }
     s21_size_t str_value_len = s21_strlen(str_value);
     sprintf_args->width -= str_value_len;

@@ -1,4 +1,4 @@
-#include "../s21_test.h"
+#include "unit_tests.h"
 
 // START_TEST(sprintf_spec_d_gen_test_1) {  // TODO: split to 3 cases
 //   char *format = s21_gen_di_cases(_i, "d");
@@ -122,16 +122,14 @@ END_TEST
 // }
 // END_TEST
 
-Suite *s21_sprintf_d_suite(void) {
+Suite *s21_sprintf_d_test(void) {
   Suite *s;
   TCase *tc;
   // int n = 5 * 4 * 2 * 2 * 2 * 2;  // TODO: do define
 
-  s = suite_create(
-      "\033[1;32m========================= \033[0mТЕСТИРОВАНИЕ sprintf_d "
-      "НАЧАЛО\033[1;32m =====================\033[0m\n\n");
+  s = suite_create("s21_sprintf_d");
 
-  tc = tcase_create("tcase");
+  tc = tcase_create("case_s21_sprintf_d");
 
   // tcase_add_loop_test(tc, sprintf_spec_d_gen_test_1, 0, n);
   // tcase_add_loop_test(tc, sprintf_spec_d_gen_test_2, 0, n);

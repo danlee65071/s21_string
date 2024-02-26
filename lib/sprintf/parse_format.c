@@ -11,7 +11,8 @@ int parse_format(char **str, const char *format, va_list arglist)
         init_flags(&sprintf_args);
         if (format[i] == '%')
             process_percent(str, format, arglist, &sprintf_args, &count, &(i));
-        (*str)[count++] = format[i];
+        if (format[i])
+            (*str)[count++] = format[i];
         i++;
     }
     return count;

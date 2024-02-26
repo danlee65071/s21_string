@@ -10,9 +10,22 @@ CFLAGS = -Wall -Werror -Wextra -g -std=c11
 
 SRC_TESTS = unit_tests.c
 HEADER_TEST = unit_tests.h
+# sprintf
+SPRINTF_TESTS_DIR = sprintf
+DIRS = $(SPRINTF_TESTS_DIR)
+SPRINTF_TESTS = s21_sprintf_c_test.c \
+	s21_sprintf_d_test.c \
+	s21_sprintf_e_test.c \
+	s21_sprintf_f_test.c \
+	s21_sprintf_g_test.c \
+	s21_sprintf_other_test.c \
+	s21_sprintf_ouxX_test.c \
+	s21_sprintf_s_test.c
+SPRINTF_TESTS_PATH = $(addprefix $(SPRINTF_TESTS_DIR)/, $(SPRINTF_TESTS))
+SRC_TESTS += $(SPRINTF_TESTS_PATH)
 # Utils
 UTILS_TESTS_DIR = utils
-DIRS = $(UTILS_TESTS_DIR)
+DIRS += $(UTILS_TESTS_DIR)
 UTILS_TESTS = s21_memchr_test.c \
 	s21_memcmp_test.c \
 	s21_memcpy_test.c \
