@@ -31,9 +31,13 @@ int main()
     int result[num_test];
 
     for (uint8_t i = 0; i < utils_tests_count; i++)
-        case_test(utils_tests_funcs[i](), result);
+        case_test(utils_tests_funcs[i](), &(result[i]));
     for (uint8_t i = 0; i < num_test; i++)
         if (result[i] != 0)
+        {
+            printf("%d\n", result[i]);
+            printf("%d\n", i);
             fail = 1;
+        }
     return fail;
 }

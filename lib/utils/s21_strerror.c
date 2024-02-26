@@ -257,13 +257,23 @@ char *errs[MAX_ERROR] = {
 
 #endif
 
-char *s21_strerror(int errnum) {
-  int unknow = 1;
-  static char message[128];
-  if (errnum < 0 && errnum > MAX_ERROR) {
-    sprintf(message, "%s%d", error_mes,
-            errnum);  // исправь позже на s21_sprintf
-    unknow = 0;
+char *s21_strerror(int errnum)
+{
+  int max_error_code = 134;
+  #if defined(__APPLE__)
+    max_error_code = 107;
+  #endif
+  if (errnum >= 0 && errnum < max_error_code)
+    return errs[errnum];
+  int sign = errnum < 0 ? -1 : 1;
+  char* num_str = s21_itoa(errnum * sign, 10);
+  if (sign < 0)
+  {
+    char* sign_str = s21_strdup("-");
+    num_str = strjoin_with_free(&sign_str, &num_str);
   }
-  return (unknow) ? errs[errnum] : message;
+  s21_strncat(error_mes, num_str, s21_strlen(num_str));
+  error_mes[15+s21_strlen(num_str)] = '\0';
+  free(num_str);
+  return error_mes;
 }
