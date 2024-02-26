@@ -62,6 +62,8 @@ OBJS = $(patsubst %.c, %.o, $(SRCS))
 OBJS_PATH = $(addprefix $(OBJS_DIR)/, $(OBJS))
 CREATES_DIR = $(addprefix $(OBJS_DIR)/, $(DIRS))
 
+DIR_TESTS = unit_tests
+
 all: $(NAME)
 
 $(NAME): $(OBJS_PATH)

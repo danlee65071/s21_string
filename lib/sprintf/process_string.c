@@ -6,7 +6,7 @@ void process_string(char **str, va_list arglist, \
     char* value = va_arg(arglist, char*);
     sprintf_args->precision = sprintf_args->precision <= 0 ? POS_INF : sprintf_args->precision;
     int str_value_len = (int)s21_strlen(value) < sprintf_args->precision ? \
-        s21_strlen(value) : sprintf_args->precision;
+        (int)s21_strlen(value) : sprintf_args->precision;
     sprintf_args->width -= str_value_len;
     if (get_flag_value(sprintf_args->flags, '-'))
     {

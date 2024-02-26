@@ -59,7 +59,7 @@ START_TEST(num_arr_test)
 {
   char str[] = {1, 3, 5, 8, 99, 7};
   int find_byte = 99;
-  s21_size_t num_byte = sizeof(int) * 6;
+  s21_size_t num_byte = sizeof(char) * 6;
 
   ck_assert_ptr_eq(s21_memchr(str, find_byte, num_byte),
                    memchr(str, find_byte, num_byte));

@@ -53,11 +53,11 @@ all: $(NAME_TEST)
 	./$(NAME_TEST)
 
 $(NAME_TEST): $(OBJS_TEST_PATH)
-	$(CC) $(CFLAGS) $(LIBS) $(LIB_PATH) -o $(NAME_TEST)
+	$(CC) $(CFLAGS) $(LIBS) $(LIB_PATH) $(OBJS_TEST_PATH) -o $(NAME_TEST)
 
-$(OBJS_TEST_DIR)/%.o: %.c $(HEADER_TEST) Makefile
+$(OBJS_TEST_DIR)/%.o: ./%.c $(HEADER_TEST) Makefile
 	mkdir -p $(OBJS_TEST_DIR) $(CREATES_DIR)
-	$(CC) $(CFLAGS) $(LIBS) -I $(LIB_HEADER_DIR) -I. -Qunused-arguments -c $< -o $@
+	$(CC) $(CFLAGS) $(LIBS) -I $(LIB_HEADER_DIR) -I. -c $< -o $@
 
 clean:
 	rm -rf $(OBJS_TEST_DIR) $(NAME_TEST)
